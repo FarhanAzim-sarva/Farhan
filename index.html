@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Farhan Azim Aurronoy | Business Analyst + Founder (SARVA)</title>
-  <meta name="description" content="Farhan Azim Aurronoy — Business Analyst portfolio. Finance-first analytics, pricing, dashboards, and SARVA founder/CFO work." />
+  <meta name="description" content="Farhan Azim Aurronoy — Finance-first analytics, pricing, dashboards, banking, and SARVA founder/CFO work." />
 
   <style>
     :root{
@@ -34,9 +34,12 @@
         radial-gradient(900px 520px at 105% 15%, rgba(111,255,210,.12), transparent 52%),
         radial-gradient(800px 500px at 50% 120%, rgba(79,140,255,.10), transparent 60%),
         var(--bg);
+      line-height:1.6;
     }
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:24px 18px 70px}
+
+    /* NAV */
     .nav{
       position:sticky; top:0; z-index:30;
       backdrop-filter: blur(10px);
@@ -57,8 +60,11 @@
       border:1px solid var(--border);
       border-radius:999px;
       background:rgba(255,255,255,.03);
+      transition:border-color .15s ease, transform .15s ease;
     }
-    .pill:hover{border-color:rgba(79,140,255,.55)}
+    .pill:hover{border-color:rgba(79,140,255,.55); transform: translateY(-1px)}
+
+    /* GRID + CARD */
     header{padding:46px 0 18px}
     .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:14px}
     .card{
@@ -67,14 +73,22 @@
       border-radius:var(--radius);
       box-shadow:var(--shadow);
       padding:22px;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
     }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(79,140,255,.55);
+      box-shadow: 0 18px 55px rgba(0,0,0,.55);
+    }
+
+    /* HERO */
     .hero-left{grid-column:span 7}
     .hero-right{grid-column:span 5}
     @media(max-width:980px){
       .hero-left,.hero-right{grid-column:span 12}
       header{padding-top:28px}
     }
-    h1{margin:0 0 10px; font-size:42px; letter-spacing:-.8px; line-height:1.05}
+    h1{margin:0 0 10px; font-size:42px; letter-spacing:-.9px; line-height:1.05}
     .sub{margin:0; color:var(--muted); font-size:15px; line-height:1.6}
     .kicker{
       display:inline-flex; align-items:center; gap:8px;
@@ -97,48 +111,50 @@
       border:1px solid var(--border);
       background:rgba(255,255,255,.04);
       font-size:13px;
-      transition: transform .15s ease, border-color .15s ease;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+      font-weight:600;
     }
     .btn:hover{transform: translateY(-1px); border-color:rgba(79,140,255,.55)}
     .btn.primary{
       background:linear-gradient(135deg, rgba(79,140,255,.95), rgba(79,140,255,.55));
       border-color:rgba(79,140,255,.9);
       color:#06101f;
-      font-weight:800;
+      font-weight:900;
+      box-shadow: 0 10px 25px rgba(79,140,255,.25);
     }
+    .btn.primary:hover{box-shadow:0 14px 35px rgba(79,140,255,.35)}
 
     /* Metric cards */
-    .metrics{grid-column:span 12}
     .metric{grid-column:span 4; padding:16px 16px 14px; box-shadow:none}
+    .metric:hover{transform:none; border-color:var(--border); box-shadow:none}
     @media(max-width:980px){.metric{grid-column:span 6}}
     @media(max-width:560px){.metric{grid-column:span 12}}
-    .metric .num{font-size:24px; font-weight:900; letter-spacing:-.3px}
+    .metric .num{font-size:24px; font-weight:950; letter-spacing:-.3px}
     .metric .lbl{margin-top:6px; font-size:12px; color:var(--muted); line-height:1.4}
+
     .mono{font-family:var(--mono)}
     .divider{height:1px; background:var(--border); margin:18px 0}
-
-    section{margin-top:20px}
+    section{margin-top:28px}
     .section-head{
       display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
-      margin:8px 0 10px;
+      margin:10px 0 12px;
     }
     .section-head h2{margin:0; font-size:16px; letter-spacing:.2px}
     .section-head span{font-size:12px; color:var(--muted)}
     .muted{color:var(--muted)}
     .muted2{color:var(--muted2)}
 
-    /* SARVA case study layout */
-    .case-left{grid-column:span 8}
-    .case-right{grid-column:span 4}
-    @media(max-width:980px){.case-left,.case-right{grid-column:span 12}}
+    /* Tags */
     .badge-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
     .tag{
       font-size:11px; padding:6px 10px; border-radius:999px;
-      border:1px solid var(--border);
+      border:1px solid rgba(255,255,255,.12);
       color:var(--muted);
-      background:rgba(255,255,255,.02);
+      background:rgba(255,255,255,.03);
       font-family:var(--mono);
     }
+
+    /* Callout + lists */
     .callout{
       border:1px solid rgba(111,255,210,.25);
       background:rgba(111,255,210,.07);
@@ -146,10 +162,15 @@
       border-radius:16px;
     }
     .callout strong{display:block; margin-bottom:6px}
-    .two-col{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px}
-    @media(max-width:720px){.two-col{grid-template-columns:1fr}}
     ul{margin:10px 0 0 18px; color:var(--muted); line-height:1.6}
     li{margin:6px 0}
+
+    /* SARVA case study layout */
+    .case-left{grid-column:span 8}
+    .case-right{grid-column:span 4}
+    @media(max-width:980px){.case-left,.case-right{grid-column:span 12}}
+    .two-col{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px}
+    @media(max-width:720px){.two-col{grid-template-columns:1fr}}
 
     /* Visual placeholders */
     .media{
@@ -183,10 +204,7 @@
     .xp strong{font-size:14px}
     .xp em{font-style:normal; font-size:12px; color:var(--muted)}
     .xp p{margin:8px 0 0; color:var(--muted); line-height:1.6; font-size:13px}
-    .mini{
-      margin-top:10px;
-      display:flex; flex-wrap:wrap; gap:8px;
-    }
+    .mini{margin-top:10px; display:flex; flex-wrap:wrap; gap:8px}
 
     /* Thinking section */
     .principles{grid-column:span 12}
@@ -208,6 +226,24 @@
     .contact-right{grid-column:span 5}
     @media(max-width:980px){.contact-left,.contact-right{grid-column:span 12}}
 
+    /* Finance/banking split + stat cards */
+    .split { grid-column: span 12; display:grid; grid-template-columns: 1.1fr .9fr; gap:14px; }
+    @media(max-width:980px){ .split{ grid-template-columns:1fr; } }
+
+    .statgrid { display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-top:12px; }
+    @media(max-width:980px){ .statgrid{ grid-template-columns:repeat(2, 1fr); } }
+    @media(max-width:560px){ .statgrid{ grid-template-columns:1fr; } }
+
+    .statcard{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      border-radius:16px;
+      padding:14px;
+    }
+    .statcard .k{font-size:12px; color:rgba(255,255,255,.82); font-family:var(--mono)}
+    .statcard .v{font-size:18px; font-weight:950; margin-top:6px}
+    .statcard .d{font-size:12px; color:var(--muted); margin-top:6px; line-height:1.45}
+
     .footer{
       margin-top:24px; padding-top:18px;
       border-top:1px solid var(--border);
@@ -227,6 +263,8 @@
       </div>
       <div class="links">
         <a class="pill" href="#sarva">SARVA</a>
+        <a class="pill" href="#finance">Finance</a>
+        <a class="pill" href="#banking">Banking</a>
         <a class="pill" href="#experience">Experience</a>
         <a class="pill" href="#thinking">How I Think</a>
         <a class="pill" href="#skills">Skills</a>
@@ -289,7 +327,7 @@
         <div class="callout">
           <strong>What you’ll find here</strong>
           <div class="muted" style="font-size:13px; line-height:1.6">
-            SARVA case study + finance lens, analytics work in fintech, and how I approach data problems like an operator—not just a reporter.
+            SARVA case study + finance lens, analytics work in fintech, banking fundamentals, and how I approach data problems like an operator.
           </div>
         </div>
       </div>
@@ -366,24 +404,21 @@
 
           <!-- Replace placeholders with your real images -->
           <div class="media">
-            <!-- Option A: Use an image -->
-            <!-- <img src="assets/sarva-dashboard.png" alt="SARVA KPI dashboard screenshot" /> -->
-
-            <!-- Option B: Placeholder -->
+            <!-- <img src="sarva-dashboard.png" alt="SARVA KPI dashboard screenshot" /> -->
             <div class="ph">
               <div>
                 <div class="mono" style="margin-bottom:8px; color:rgba(255,255,255,.78)">Drop a screenshot here</div>
                 KPI dashboard / pricing model / market sizing slide<br/>
-                <span class="muted2">(you can blur sensitive numbers)</span>
+                <span class="muted2">(blur sensitive numbers)</span>
               </div>
             </div>
-            <div class="cap"><b>Recommended:</b> KPI dashboard + one “market sizing” slide</div>
+            <div class="cap"><b>Recommended:</b> KPI dashboard + one market sizing slide</div>
           </div>
 
           <div style="height:12px"></div>
 
           <div class="media">
-            <!-- <img src="assets/sarva-site.png" alt="SARVA website screenshot" /> -->
+            <!-- <img src="sarva-site.png" alt="SARVA website screenshot" /> -->
             <div class="ph">
               <div>
                 <div class="mono" style="margin-bottom:8px; color:rgba(255,255,255,.78)">Drop a screenshot here</div>
@@ -399,8 +434,167 @@
             <strong>Links</strong>
             <div class="muted" style="font-size:13px; line-height:1.7">
               <!-- Update these -->
-              <div>Website: <a class="mono" href="#" target="_blank" rel="noreferrer">sarvabazaar.com</a></div>
+              <div>Website: <a class="mono" href="https://www.sarvabazaar.com" target="_blank" rel="noreferrer">sarvabazaar.com</a></div>
               <div>Deck / Case Study: <a class="mono" href="#" target="_blank" rel="noreferrer">coming soon</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINANCE -->
+    <section id="finance">
+      <div class="section-head">
+        <h2>Finance</h2>
+        <span>forecasting • unit economics • pricing • decision support</span>
+      </div>
+
+      <div class="grid">
+        <div class="card split">
+          <div>
+            <h3 style="margin:0 0 6px; font-size:18px">Finance work that’s built for decision-making</h3>
+            <p class="sub" style="margin-top:8px">
+              My finance work focuses on building models and metrics that leadership can actually use:
+              forecasting, unit economics, pricing trade-offs, and KPI systems that connect finance to product and operations.
+            </p>
+
+            <div class="divider"></div>
+
+            <h4 style="margin:0 0 6px; font-size:14px; letter-spacing:.2px">What I deliver</h4>
+            <ul>
+              <li><b>Forecasting + scenario models</b> to plan runway, growth paths, and resource allocation.</li>
+              <li><b>Unit economics</b> (CAC, LTV, margins) to evaluate sustainability, not just growth.</li>
+              <li><b>Pricing and incentive analysis</b> to balance vendor adoption with platform profitability.</li>
+              <li><b>KPI frameworks</b> that convert strategy into measurable execution.</li>
+            </ul>
+
+            <div class="badge-row" style="margin-top:12px">
+              <span class="tag">Financial modeling</span>
+              <span class="tag">Forecasting</span>
+              <span class="tag">Scenario analysis</span>
+              <span class="tag">Unit economics</span>
+              <span class="tag">Pricing</span>
+              <span class="tag">Dashboards</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="callout">
+              <strong>Finance snapshot</strong>
+              <div class="muted" style="font-size:13px; line-height:1.7">
+                Built models and KPI systems that support startup planning, fundraising storytelling, and operational trade-offs.
+                (I keep sensitive numbers private—structure and approach are what I show.)
+              </div>
+            </div>
+
+            <div class="statgrid">
+              <div class="statcard">
+                <div class="k">Model Type</div>
+                <div class="v">5-Year Forecast</div>
+                <div class="d">Revenue, costs, margin, burn, runway, scenarios.</div>
+              </div>
+              <div class="statcard">
+                <div class="k">Core Metrics</div>
+                <div class="v">CAC • LTV</div>
+                <div class="d">Gross margin, vendor margin, retention drivers.</div>
+              </div>
+              <div class="statcard">
+                <div class="k">Decision Outputs</div>
+                <div class="v">Pricing Trade-offs</div>
+                <div class="d">Incentives vs profitability; growth vs burn.</div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="media">
+              <!-- <img src="sarva-finance-model.png" alt="Finance model or KPI dashboard screenshot" /> -->
+              <div class="ph">
+                <div>
+                  <div class="mono" style="margin-bottom:8px; color:rgba(255,255,255,.78)">Optional screenshot</div>
+                  Finance model / KPI dashboard (blur sensitive numbers)
+                </div>
+              </div>
+              <div class="cap"><b>Recommended:</b> a KPI dashboard or a clean model screenshot</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BANKING -->
+    <section id="banking">
+      <div class="section-head">
+        <h2>Banking</h2>
+        <span>credit • risk • SME lending • portfolio support</span>
+      </div>
+
+      <div class="grid">
+        <div class="card split">
+          <div>
+            <h3 style="margin:0 0 6px; font-size:18px">Commercial banking experience (SME)</h3>
+            <p class="sub" style="margin-top:8px">
+              In banking, I focused on credit support and client portfolio work—reviewing financials, assessing risk, and supporting lending decisions
+              with compliance and business context in mind.
+            </p>
+
+            <div class="divider"></div>
+
+            <h4 style="margin:0 0 6px; font-size:14px; letter-spacing:.2px">What I worked on</h4>
+            <ul>
+              <li><b>Loan application support</b>: financial statement review and documentation checks.</li>
+              <li><b>Credit/risk assessment</b>: evaluating borrower profiles and basic lending risk indicators.</li>
+              <li><b>Portfolio review</b>: analyzing client exposures and supporting relationship managers.</li>
+              <li><b>Client support</b>: assisting SME relationship work and decision readiness.</li>
+            </ul>
+
+            <div class="badge-row" style="margin-top:12px">
+              <span class="tag">Credit analysis</span>
+              <span class="tag">Risk assessment</span>
+              <span class="tag">SME lending</span>
+              <span class="tag">Financial statements</span>
+              <span class="tag">Client portfolio</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="callout">
+              <strong>Banking impact</strong>
+              <div class="muted" style="font-size:13px; line-height:1.7">
+                Supported relationship managers and contributed to client growth activities resulting in <b>$60K+</b> in loan extensions,
+                while strengthening compliance-aligned lending decisions.
+              </div>
+            </div>
+
+            <div class="statgrid">
+              <div class="statcard">
+                <div class="k">Segment</div>
+                <div class="v">SME</div>
+                <div class="d">Commercial client relationship support.</div>
+              </div>
+              <div class="statcard">
+                <div class="k">Focus</div>
+                <div class="v">Credit + Risk</div>
+                <div class="d">Financial review + lending support.</div>
+              </div>
+              <div class="statcard">
+                <div class="k">Result</div>
+                <div class="v">$60K+</div>
+                <div class="d">Loan extensions supported through relationship expansion.</div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="media">
+              <!-- <img src="banking-credit-workflow.png" alt="Credit workflow visual" /> -->
+              <div class="ph">
+                <div>
+                  <div class="mono" style="margin-bottom:8px; color:rgba(255,255,255,.78)">Optional visual</div>
+                  Credit workflow diagram / portfolio dashboard mock
+                </div>
+              </div>
+              <div class="cap"><b>Optional:</b> a simple credit workflow visual (even a mock)</div>
             </div>
           </div>
         </div>
@@ -427,6 +621,20 @@
           </p>
           <div class="mini">
             <span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Pricing analytics</span><span class="tag">KPI design</span>
+          </div>
+        </div>
+
+        <div class="card xp">
+          <div class="top">
+            <strong>SARVA · Business & Financial Analyst (Founder / CFO)</strong>
+            <em>Jan 2025 – Present</em>
+          </div>
+          <p>
+            Owned forecasting, unit economics, and KPI systems for an early-stage tech startup. Analyzed <b>50+</b> vendors and <b>1,500+</b> customers
+            to quantify demand and pricing sensitivity. Supported <b>10+</b> investor/pitch presentations with financial models and decision-ready narratives.
+          </p>
+          <div class="mini">
+            <span class="tag">Forecasting</span><span class="tag">Unit economics</span><span class="tag">Pricing</span><span class="tag">Dashboards</span>
           </div>
         </div>
 
