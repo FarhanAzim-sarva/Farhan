@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Farhan Azim Aurronoy | Business Analyst + Founder (SARVA)</title>
+  <meta name="description" content="Farhan Azim Aurronoy — Business Analyst portfolio. Finance-first analytics, pricing, dashboards, and SARVA founder/CFO work." />
+
+  <style>
+    :root{
+      --bg:#070A10;
+      --panel:#0C1220;
+      --panel2:#0A0F1A;
+      --text:#EAF1FF;
+      --muted:#A9B4C2;
+      --muted2:#7F8AA0;
+      --accent:#4F8CFF;
+      --accent2:#6FFFD2;
+      --border:rgba(255,255,255,.10);
+      --shadow:0 14px 40px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:1120px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1100px 620px at 20% -10%, rgba(79,140,255,.24), transparent 58%),
+        radial-gradient(900px 520px at 105% 15%, rgba(111,255,210,.12), transparent 52%),
+        radial-gradient(800px 500px at 50% 120%, rgba(79,140,255,.10), transparent 60%),
+        var(--bg);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px 18px 70px}
+    .nav{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(10px);
+      background:rgba(7,10,16,.66);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{
+      max-width:var(--max); margin:0 auto;
+      padding:14px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+    }
+    .brand{display:flex; flex-direction:column; line-height:1.12}
+    .brand strong{font-size:14px; letter-spacing:.2px}
+    .brand span{font-size:12px; color:var(--muted)}
+    .links{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .pill{
+      font-size:12px; padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+    }
+    .pill:hover{border-color:rgba(79,140,255,.55)}
+    header{padding:46px 0 18px}
+    .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:14px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+    .hero-left{grid-column:span 7}
+    .hero-right{grid-column:span 5}
+    @media(max-width:980px){
+      .hero-left,.hero-right{grid-column:span 12}
+      header{padding-top:28px}
+    }
+    h1{margin:0 0 10px; font-size:42px; letter-spacing:-.8px; line-height:1.05}
+    .sub{margin:0; color:var(--muted); font-size:15px; line-height:1.6}
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px; color:rgba(255,255,255,.86);
+      border:1px solid rgba(79,140,255,.35);
+      background:rgba(79,140,255,.10);
+      padding:7px 10px; border-radius:999px;
+      margin-bottom:12px;
+    }
+    .kicker .dot{
+      width:7px; height:7px; border-radius:50%;
+      background:linear-gradient(135deg, var(--accent), rgba(111,255,210,.9));
+      box-shadow:0 0 14px rgba(79,140,255,.55);
+    }
+    .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      font-size:13px;
+      transition: transform .15s ease, border-color .15s ease;
+    }
+    .btn:hover{transform: translateY(-1px); border-color:rgba(79,140,255,.55)}
+    .btn.primary{
+      background:linear-gradient(135deg, rgba(79,140,255,.95), rgba(79,140,255,.55));
+      border-color:rgba(79,140,255,.9);
+      color:#06101f;
+      font-weight:800;
+    }
+
+    /* Metric cards */
+    .metrics{grid-column:span 12}
+    .metric{grid-column:span 4; padding:16px 16px 14px; box-shadow:none}
+    @media(max-width:980px){.metric{grid-column:span 6}}
+    @media(max-width:560px){.metric{grid-column:span 12}}
+    .metric .num{font-size:24px; font-weight:900; letter-spacing:-.3px}
+    .metric .lbl{margin-top:6px; font-size:12px; color:var(--muted); line-height:1.4}
+    .mono{font-family:var(--mono)}
+    .divider{height:1px; background:var(--border); margin:18px 0}
+
+    section{margin-top:20px}
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+      margin:8px 0 10px;
+    }
+    .section-head h2{margin:0; font-size:16px; letter-spacing:.2px}
+    .section-head span{font-size:12px; color:var(--muted)}
+    .muted{color:var(--muted)}
+    .muted2{color:var(--muted2)}
+
+    /* SARVA case study layout */
+    .case-left{grid-column:span 8}
+    .case-right{grid-column:span 4}
+    @media(max-width:980px){.case-left,.case-right{grid-column:span 12}}
+    .badge-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{
+      font-size:11px; padding:6px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      color:var(--muted);
+      background:rgba(255,255,255,.02);
+      font-family:var(--mono);
+    }
+    .callout{
+      border:1px solid rgba(111,255,210,.25);
+      background:rgba(111,255,210,.07);
+      padding:14px 14px 12px;
+      border-radius:16px;
+    }
+    .callout strong{display:block; margin-bottom:6px}
+    .two-col{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px}
+    @media(max-width:720px){.two-col{grid-template-columns:1fr}}
+    ul{margin:10px 0 0 18px; color:var(--muted); line-height:1.6}
+    li{margin:6px 0}
+
+    /* Visual placeholders */
+    .media{
+      border:1px dashed rgba(255,255,255,.18);
+      background:rgba(255,255,255,.02);
+      border-radius:16px;
+      padding:14px;
+      overflow:hidden;
+    }
+    .media img{
+      width:100%; height:auto; display:block;
+      border-radius:12px;
+    }
+    .media .ph{
+      display:flex; align-items:center; justify-content:center;
+      height:220px;
+      border-radius:12px;
+      background:rgba(255,255,255,.02);
+      color:var(--muted);
+      text-align:center;
+      padding:12px;
+      font-size:12px;
+    }
+    .media .cap{margin-top:10px; font-size:12px; color:var(--muted)}
+    .media .cap b{color:rgba(255,255,255,.85)}
+
+    /* Experience cards */
+    .xp{grid-column:span 6}
+    @media(max-width:980px){.xp{grid-column:span 12}}
+    .xp .top{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+    .xp strong{font-size:14px}
+    .xp em{font-style:normal; font-size:12px; color:var(--muted)}
+    .xp p{margin:8px 0 0; color:var(--muted); line-height:1.6; font-size:13px}
+    .mini{
+      margin-top:10px;
+      display:flex; flex-wrap:wrap; gap:8px;
+    }
+
+    /* Thinking section */
+    .principles{grid-column:span 12}
+    .principle{grid-column:span 4}
+    @media(max-width:980px){.principle{grid-column:span 6}}
+    @media(max-width:560px){.principle{grid-column:span 12}}
+    .principle strong{display:block; margin-bottom:6px}
+    .principle p{margin:0; color:var(--muted); line-height:1.6; font-size:13px}
+
+    /* Skills blocks */
+    .skill{grid-column:span 4}
+    @media(max-width:980px){.skill{grid-column:span 6}}
+    @media(max-width:560px){.skill{grid-column:span 12}}
+    .skill strong{display:block; margin-bottom:8px}
+    .skill .tag{margin:3px 6px 0 0; display:inline-block}
+
+    /* Contact */
+    .contact-left{grid-column:span 7}
+    .contact-right{grid-column:span 5}
+    @media(max-width:980px){.contact-left,.contact-right{grid-column:span 12}}
+
+    .footer{
+      margin-top:24px; padding-top:18px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:12px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <strong>Farhan Azim Aurronoy</strong>
+        <span>Business Analyst • Quant Econ • Finance + Data Systems</span>
+      </div>
+      <div class="links">
+        <a class="pill" href="#sarva">SARVA</a>
+        <a class="pill" href="#experience">Experience</a>
+        <a class="pill" href="#thinking">How I Think</a>
+        <a class="pill" href="#skills">Skills</a>
+        <a class="pill" href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- HERO -->
+    <header class="grid">
+      <div class="card hero-left">
+        <div class="kicker"><span class="dot"></span><span>Finance-first analytics • pricing • dashboards • operational systems</span></div>
+        <h1>I use data to evaluate markets, pricing, and decisions.</h1>
+        <p class="sub">
+          I’m a Quantitative Economics major and Business Analyst who builds dashboards, automates reporting, and turns messy data into clear
+          recommendations for stakeholders. I also run finance and analytics as a Founder/CFO at <b>SARVA</b>, applying unit economics and KPI
+          systems to a real supply chain problem.
+        </p>
+
+        <div class="cta">
+          <!-- Update these links -->
+          <a class="btn primary" href="#sarva">View SARVA Case Study</a>
+          <a class="btn" href="https://linkedin.com/in/farhanazimaurronoy/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="mailto:farhanazim2015@gmail.com">Email</a>
+          <a class="btn" href="#" target="_blank" rel="noreferrer">Resume (PDF)</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="sub" style="margin:0">
+          <span class="muted2 mono">Focus:</span>
+          pricing analytics • financial modeling • KPI design • stakeholder reporting • process automation
+        </p>
+      </div>
+
+      <div class="card hero-right">
+        <div class="section-head">
+          <h2>Impact Snapshot</h2>
+          <span class="mono">high-signal metrics</span>
+        </div>
+
+        <div class="grid" style="gap:10px">
+          <div class="card metric">
+            <div class="num">$200K+</div>
+            <div class="lbl">Projected annual savings identified via pricing model analysis (Power BI + SQL)</div>
+          </div>
+          <div class="card metric">
+            <div class="num">30%+</div>
+            <div class="lbl">Manual reporting reduced by automating SQL pipelines and KPI reporting</div>
+          </div>
+          <div class="card metric">
+            <div class="num">1,500+</div>
+            <div class="lbl">Customer profiles analyzed to measure demand patterns & pricing sensitivity</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="callout">
+          <strong>What you’ll find here</strong>
+          <div class="muted" style="font-size:13px; line-height:1.6">
+            SARVA case study + finance lens, analytics work in fintech, and how I approach data problems like an operator—not just a reporter.
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SARVA CASE STUDY -->
+    <section id="sarva">
+      <div class="section-head">
+        <h2>SARVA Case Study</h2>
+        <span>Finance + analytics applied to a real market</span>
+      </div>
+
+      <div class="grid">
+        <div class="card case-left">
+          <h3 style="margin:0 0 6px; font-size:20px; letter-spacing:-.2px">SARVA: Applying Finance & Analytics to a Real Market</h3>
+          <p class="sub" style="margin-top:8px">
+            SARVA is an AI-powered multilingual supply-chain platform for ethnic grocery vendors. I treat SARVA as a real-world environment to
+            apply pricing analysis, unit economics, operational KPIs, and investor-grade financial storytelling.
+          </p>
+
+          <div class="badge-row">
+            <span class="tag">Market sizing</span>
+            <span class="tag">Unit economics</span>
+            <span class="tag">Pricing + incentives</span>
+            <span class="tag">KPI systems</span>
+            <span class="tag">Dashboards</span>
+            <span class="tag">Fundraising analytics</span>
+          </div>
+
+          <div class="two-col">
+            <div class="callout">
+              <strong>Market & Data Lens</strong>
+              <div class="muted" style="font-size:13px; line-height:1.6">
+                <div><span class="mono">Market sized:</span> $270B+</div>
+                <div><span class="mono">Vendor partners analyzed:</span> 50+</div>
+                <div><span class="mono">Customer profiles analyzed:</span> 1,500+</div>
+              </div>
+            </div>
+
+            <div class="callout">
+              <strong>Operating Metrics I Track</strong>
+              <div class="muted" style="font-size:13px; line-height:1.6">
+                CAC • LTV • gross margin • vendor margin • burn rate • runway • fulfillment rate • order frequency
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <h4 style="margin:0 0 6px; font-size:14px; letter-spacing:.2px">What I do as Founder/CFO (finance + analytics ownership)</h4>
+          <ul>
+            <li>Built and maintained <b>5-year forecasts</b>, unit economics, and scenario models to guide product prioritization and capital planning.</li>
+            <li>Designed KPI definitions and dashboard structures to quantify trade-offs: growth vs. margin, vendor incentives vs. platform sustainability.</li>
+            <li>Analyzed pricing/commission structures and delivery-cost assumptions to ensure scalable economics across vendors and regions.</li>
+            <li>Prepared investor-ready analytics and narratives used in <b>10+ pitches</b>, competitions, and stakeholder discussions.</li>
+            <li>Partnered with product/engineering/ops to translate insights into measurable requirements (events, funnels, KPIs, reporting cadence).</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <h4 style="margin:0 0 6px; font-size:14px; letter-spacing:.2px">Insight: How finance changed product decisions</h4>
+          <p class="sub" style="margin-top:8px">
+            I don’t treat finance as reporting—I treat it as decision design. Forecasting and KPI systems help answer:
+            <span class="muted2">Where is margin created? What breaks at scale? What incentives drive vendor adoption? Which features improve retention vs. cost?</span>
+            That lens shapes what we build and how we price.
+          </p>
+        </div>
+
+        <div class="card case-right">
+          <div class="section-head" style="margin-top:0">
+            <h2 style="font-size:14px; margin:0">SARVA Visuals</h2>
+            <span class="mono">add screenshots</span>
+          </div>
+
+          <!-- Replace placeholders with your real images -->
+          <div class="media">
+            <!-- Option A: Use an image -->
+            <!-- <img src="assets/sarva-dashboard.png" alt="SARVA KPI dashboard screenshot" /> -->
+
+            <!-- Option B: Placeholder -->
+            <div class="ph">
+              <div>
+                <div class="mono" style="margin-bottom:8px; color:rgba(255,255,255,.78)">Drop a screenshot here</div>
+                KPI dashboard / pricing model / market sizing slide<br/>
+                <span class="muted2">(you can blur sensitive numbers)</span>
+              </div>
+            </div>
+            <div class="cap"><b>Recommended:</b> KPI dashboard + one “market sizing” slide</div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="media">
+            <!-- <img src="assets/sarva-site.png" alt="SARVA website screenshot" /> -->
+            <div class="ph">
+              <div>
+                <div class="mono" style="margin-bottom:8px; color:rgba(255,255,255,.78)">Drop a screenshot here</div>
+                SARVA website / product flow / vendor portal
+              </div>
+            </div>
+            <div class="cap"><b>Recommended:</b> SARVA landing page or vendor workflow</div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="callout">
+            <strong>Links</strong>
+            <div class="muted" style="font-size:13px; line-height:1.7">
+              <!-- Update these -->
+              <div>Website: <a class="mono" href="#" target="_blank" rel="noreferrer">sarvabazaar.com</a></div>
+              <div>Deck / Case Study: <a class="mono" href="#" target="_blank" rel="noreferrer">coming soon</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-head">
+        <h2>Professional Experience</h2>
+        <span>Problem → analysis → outcome</span>
+      </div>
+
+      <div class="grid">
+        <div class="card xp">
+          <div class="top">
+            <strong>The Pension Boards – UCC · Business Analyst (FinTech)</strong>
+            <em>Jun 2025 – Aug 2025</em>
+          </div>
+          <p>
+            Drove pricing and financial analysis using <b>Power BI, SQL, Excel</b>, comparing rate methodologies and identifying <b>$200K+</b> in projected annual savings.
+            Designed executive dashboards for rate dispersion, demographics, and cost drivers. Led cross-functional collaboration with Finance/IT/Ops
+            to automate reporting and establish KPI frameworks, reducing manual reporting by <b>30%+</b>.
+          </p>
+          <div class="mini">
+            <span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Pricing analytics</span><span class="tag">KPI design</span>
+          </div>
+        </div>
+
+        <div class="card xp">
+          <div class="top">
+            <strong>QiMeta · Business Analyst</strong>
+            <em>Aug 2024 – Dec 2024</em>
+          </div>
+          <p>
+            Automated acquisition workflows in <b>HubSpot</b>, improving lead conversion efficiency by <b>25%</b> and increasing pipeline visibility.
+            Built recurring KPI reports and performed segmentation analysis to identify high-value clusters and refine outreach strategy across regions.
+          </p>
+          <div class="mini">
+            <span class="tag">HubSpot</span><span class="tag">Segmentation</span><span class="tag">Automation</span><span class="tag">Reporting</span>
+          </div>
+        </div>
+
+        <div class="card xp">
+          <div class="top">
+            <strong>ONE Bank Limited · Commercial Banking Analyst (SME)</strong>
+            <em>Jun 2023 – Aug 2023</em>
+          </div>
+          <p>
+            Supported SME banking teams through financial statement review, credit/risk assessment, and client portfolio analysis.
+            Contributed to relationship expansion resulting in <b>$60K+</b> in loan extensions and strengthened compliance-aligned lending decisions.
+          </p>
+          <div class="mini">
+            <span class="tag">Credit analysis</span><span class="tag">Risk</span><span class="tag">Client portfolio</span>
+          </div>
+        </div>
+
+        <div class="card xp">
+          <div class="top">
+            <strong>Bangladesh Agricultural Development Corporation (BADC) · Financial & Ops Analyst</strong>
+            <em>Jun 2024 – Aug 2024</em>
+          </div>
+          <p>
+            Conducted financial and operational analysis to support program planning and resource allocation. Evaluated performance metrics and cost efficiency,
+            contributing recommendations that improved outcomes by <b>15%</b> and supported <b>22+</b> stakeholders.
+          </p>
+          <div class="mini">
+            <span class="tag">Ops analytics</span><span class="tag">Performance metrics</span><span class="tag">Cost efficiency</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW I THINK -->
+    <section id="thinking">
+      <div class="section-head">
+        <h2>How I Approach Data & Finance Problems</h2>
+        <span>simple principles that guide my work</span>
+      </div>
+
+      <div class="grid principles">
+        <div class="card principle">
+          <strong>Start with the decision</strong>
+          <p>I clarify who’s deciding, what trade-offs matter, and what “good” looks like before touching a dashboard or model.</p>
+        </div>
+        <div class="card principle">
+          <strong>Measure incentives, not vanity</strong>
+          <p>I design KPIs that reflect incentives (pricing, retention, margin) so metrics drive behavior—not just reporting.</p>
+        </div>
+        <div class="card principle">
+          <strong>Make complexity usable</strong>
+          <p>My output is decision-ready: tight dashboards, clear assumptions, and recommendations stakeholders can act on immediately.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-head">
+        <h2>Technical Skills</h2>
+        <span>organized for finance + analytics screening</span>
+      </div>
+
+      <div class="grid">
+        <div class="card skill">
+          <strong>Analytics & Modeling</strong>
+          <div>
+            <span class="tag">Power BI</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Excel (Advanced)</span>
+            <span class="tag">R</span>
+            <span class="tag">Stata</span>
+            <span class="tag">GIS</span>
+          </div>
+        </div>
+
+        <div class="card skill">
+          <strong>Finance & Operating Analytics</strong>
+          <div>
+            <span class="tag">Forecasting</span>
+            <span class="tag">Unit economics</span>
+            <span class="tag">Pricing analysis</span>
+            <span class="tag">KPI design</span>
+            <span class="tag">Scenario modeling</span>
+            <span class="tag">Stakeholder reporting</span>
+          </div>
+        </div>
+
+        <div class="card skill">
+          <strong>AI, Product & Design</strong>
+          <div>
+            <span class="tag">ChatGPT</span>
+            <span class="tag">GPT-4</span>
+            <span class="tag">Prompt engineering</span>
+            <span class="tag">AI chatbots</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Canva</span>
+          </div>
+        </div>
+
+        <div class="card skill" style="grid-column:span 12">
+          <strong>Business Systems</strong>
+          <div>
+            <span class="tag">HubSpot</span>
+            <span class="tag">NetSuite</span>
+            <span class="tag">Azure DevOps</span>
+            <span class="tag">GoAnywhere</span>
+            <span class="tag">MS 365</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERESTS -->
+    <section id="interests">
+      <div class="section-head">
+        <h2>Interests</h2>
+        <span>what I like to think about</span>
+      </div>
+
+      <div class="grid">
+        <div class="card" style="grid-column:span 12">
+          <div class="badge-row" style="margin-top:0">
+            <span class="tag">Pricing systems</span>
+            <span class="tag">Market design</span>
+            <span class="tag">FinTech infrastructure</span>
+            <span class="tag">Supply chain analytics</span>
+            <span class="tag">Behavior + incentives</span>
+            <span class="tag">Data storytelling</span>
+          </div>
+          <p class="sub" style="margin-top:12px">
+            I’m most interested in problems where finance meets real operations: how pricing shapes behavior, how metrics create incentives, and how
+            systems can be designed so better data leads to better decisions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <span>quick ways to reach me</span>
+      </div>
+
+      <div class="grid">
+        <div class="card contact-left">
+          <h3 style="margin:0 0 6px; font-size:18px">Let’s talk</h3>
+          <p class="sub" style="margin-top:8px">
+            If you’re hiring for Business Analyst / Finance Analyst / Banking / Ops roles, I’d love to share how I approach data and decision-making.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="mailto:farhanazim2015@gmail.com">Email</a>
+            <a class="btn" href="https://linkedin.com/in/farhanazimaurronoy/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Resume (PDF)</a>
+          </div>
+        </div>
+
+        <div class="card contact-right">
+          <div class="callout">
+            <strong>Contact Info</strong>
+            <div class="muted" style="font-size:13px; line-height:1.8; margin-top:6px">
+              <div>Email: <a class="mono" href="mailto:farhanazim2015@gmail.com">farhanazim2015@gmail.com</a></div>
+              <div>LinkedIn: <a class="mono" href="https://linkedin.com/in/farhanazimaurronoy/" target="_blank" rel="noreferrer">/in/farhanazimaurronoy</a></div>
+              <div>Location: <span class="mono">Carlisle, PA</span></div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="muted2" style="font-size:12px; line-height:1.6">
+            <span class="mono">Tip:</span> add 1–2 SARVA screenshots (dashboard + product) to instantly make this feel “real” to recruiters.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <span>© <span id="y"></span> Farhan Azim Aurronoy</span>
+      <span class="mono">Power BI • SQL • Pricing • Unit Economics</span>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
