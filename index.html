@@ -3,26 +3,31 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Farhan Azim Aurronoy | Finance + Analytics + Product Systems</title>
-  <meta name="description" content="Farhan Azim Aurronoy — Finance-first analytics, pricing, dashboards, banking, and SARVA." />
+  <title>Farhan Azim Aurronoy | Finance • Analytics • Banking • Product Systems</title>
+  <meta name="description" content="Farhan Azim Aurronoy — finance-first analytics, pricing, dashboards, banking, and SARVA." />
 
   <style>
     :root{
-      --bg:#070A10;
-      --panel:#0C1220;
-      --panel2:#0A0F1A;
-      --text:#EAF1FF;
-      --muted:#A9B4C2;
-      --muted2:#7F8AA0;
-      --accent:#4F8CFF;
-      --accent2:#6FFFD2;
-      --border:rgba(255,255,255,.10);
-      --shadow:0 14px 40px rgba(0,0,0,.45);
+      /* Brighter, higher-contrast palette */
+      --bg:#060913;
+      --panel:#0B1326;
+      --panel2:#0A1022;
+      --text:#F2F7FF;
+      --muted:#B8C4D6;
+      --muted2:#8FA0B8;
+
+      --accent:#68A3FF;     /* brighter blue */
+      --accent2:#7CFFDD;    /* brighter mint */
+      --accent3:#B07CFF;    /* violet pop */
+      --border:rgba(255,255,255,.12);
+      --shadow:0 16px 50px rgba(0,0,0,.50);
       --radius:18px;
       --max:1120px;
+
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
@@ -30,20 +35,20 @@
       font-family:var(--sans);
       color:var(--text);
       background:
-        radial-gradient(1100px 620px at 20% -10%, rgba(79,140,255,.24), transparent 58%),
-        radial-gradient(900px 520px at 105% 15%, rgba(111,255,210,.12), transparent 52%),
-        radial-gradient(800px 500px at 50% 120%, rgba(79,140,255,.10), transparent 60%),
+        radial-gradient(1200px 700px at 15% -10%, rgba(104,163,255,.30), transparent 60%),
+        radial-gradient(900px 520px at 105% 10%, rgba(124,255,221,.16), transparent 55%),
+        radial-gradient(900px 520px at 55% 120%, rgba(176,124,255,.12), transparent 60%),
         var(--bg);
       line-height:1.55;
     }
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px 18px 70px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 70px}
 
     /* NAV */
     .nav{
       position:sticky; top:0; z-index:30;
-      backdrop-filter: blur(10px);
-      background:rgba(7,10,16,.66);
+      backdrop-filter: blur(12px);
+      background:rgba(6,9,19,.70);
       border-bottom:1px solid var(--border);
     }
     .nav-inner{
@@ -52,23 +57,27 @@
       display:flex; align-items:center; justify-content:space-between; gap:14px;
     }
     .brand{display:flex; flex-direction:column; line-height:1.12}
-    .brand strong{font-size:14px; letter-spacing:.2px}
+    .brand strong{font-size:14px; letter-spacing:.25px}
     .brand span{font-size:12px; color:var(--muted)}
     .links{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
     .pill{
       font-size:12px; padding:8px 12px;
       border:1px solid var(--border);
       border-radius:999px;
-      background:rgba(255,255,255,.03);
-      transition:border-color .15s ease, transform .15s ease;
+      background:rgba(255,255,255,.04);
+      transition:border-color .15s ease, transform .15s ease, background .15s ease;
     }
-    .pill:hover{border-color:rgba(79,140,255,.55); transform: translateY(-1px)}
+    .pill:hover{
+      border-color:rgba(104,163,255,.65);
+      background:rgba(104,163,255,.10);
+      transform: translateY(-1px)
+    }
 
     /* GRID + CARD */
-    header{padding:40px 0 12px}
+    header{padding:34px 0 12px}
     .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:14px}
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
       border:1px solid var(--border);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
@@ -77,9 +86,14 @@
     }
     .card:hover{
       transform: translateY(-2px);
-      border-color: rgba(79,140,255,.55);
-      box-shadow: 0 18px 55px rgba(0,0,0,.55);
+      border-color: rgba(104,163,255,.65);
+      box-shadow: 0 20px 65px rgba(0,0,0,.60);
     }
+
+    .divider{height:1px; background:var(--border); margin:16px 0}
+    .mono{font-family:var(--mono)}
+    .muted{color:var(--muted)}
+    .muted2{color:var(--muted2)}
 
     /* HERO */
     .hero-left{grid-column:span 8}
@@ -88,37 +102,29 @@
       .hero-left,.hero-right{grid-column:span 12}
       header{padding-top:22px}
     }
-
-    .hero-top{
-      display:flex; gap:16px; align-items:flex-start;
-    }
-    @media(max-width:560px){
-      .hero-top{flex-direction:column}
-    }
-
+    .hero-top{display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap}
     .avatar{
-      width:92px; height:92px; border-radius:18px;
-      border:1px solid rgba(255,255,255,.14);
-      background:
-        radial-gradient(90px 90px at 30% 20%, rgba(79,140,255,.35), transparent 60%),
-        rgba(255,255,255,.03);
+      width:98px; height:98px; border-radius:20px;
       overflow:hidden;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.05);
       flex:0 0 auto;
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
     }
     .avatar img{width:100%; height:100%; object-fit:cover; display:block}
 
     .kicker{
       display:inline-flex; align-items:center; gap:8px;
-      font-size:12px; color:rgba(255,255,255,.88);
-      border:1px solid rgba(79,140,255,.35);
-      background:rgba(79,140,255,.10);
+      font-size:12px; color:rgba(255,255,255,.92);
+      border:1px solid rgba(104,163,255,.40);
+      background:rgba(104,163,255,.12);
       padding:7px 10px; border-radius:999px;
       margin:0 0 10px;
     }
     .kicker .dot{
       width:7px; height:7px; border-radius:50%;
-      background:linear-gradient(135deg, var(--accent), rgba(111,255,210,.9));
-      box-shadow:0 0 14px rgba(79,140,255,.55);
+      background:linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow:0 0 14px rgba(104,163,255,.55);
     }
 
     h1{margin:0 0 8px; font-size:40px; letter-spacing:-.9px; line-height:1.05}
@@ -130,29 +136,34 @@
       padding:10px 14px;
       border-radius:12px;
       border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
+      background:rgba(255,255,255,.05);
       font-size:13px;
-      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
-      font-weight:700;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease, background .15s ease;
+      font-weight:800;
     }
-    .btn:hover{transform: translateY(-1px); border-color:rgba(79,140,255,.55)}
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color:rgba(104,163,255,.65);
+      background:rgba(104,163,255,.10);
+    }
     .btn.primary{
-      background:linear-gradient(135deg, rgba(79,140,255,.95), rgba(79,140,255,.55));
-      border-color:rgba(79,140,255,.9);
-      color:#06101f;
-      font-weight:900;
-      box-shadow: 0 10px 25px rgba(79,140,255,.25);
+      background:linear-gradient(135deg, rgba(104,163,255,.98), rgba(176,124,255,.65));
+      border-color:rgba(104,163,255,.95);
+      color:#071022;
+      font-weight:950;
+      box-shadow: 0 12px 30px rgba(104,163,255,.25);
     }
-    .btn.primary:hover{box-shadow:0 14px 35px rgba(79,140,255,.35)}
-    .btn.ghost{
-      border-color:rgba(111,255,210,.30);
-      background:rgba(111,255,210,.06);
+    .btn.primary:hover{box-shadow:0 16px 42px rgba(104,163,255,.35)}
+    .btn.mint{
+      border-color:rgba(124,255,221,.35);
+      background:rgba(124,255,221,.08);
     }
-    .btn.ghost:hover{border-color:rgba(111,255,210,.55)}
+    .btn.mint:hover{
+      border-color:rgba(124,255,221,.65);
+      background:rgba(124,255,221,.12);
+    }
 
-    .divider{height:1px; background:var(--border); margin:16px 0}
-    .mono{font-family:var(--mono)}
-
+    /* Section heads */
     section{margin-top:24px}
     .section-head{
       display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
@@ -160,20 +171,18 @@
     }
     .section-head h2{margin:0; font-size:15px; letter-spacing:.25px}
     .section-head span{font-size:12px; color:var(--muted)}
-    .muted{color:var(--muted)}
-    .muted2{color:var(--muted2)}
 
     /* Tags */
     .badge-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
     .tag{
       font-size:11px; padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.14);
       color:var(--muted);
-      background:rgba(255,255,255,.03);
+      background:rgba(255,255,255,.04);
       font-family:var(--mono);
     }
 
-    /* Compact metric cards */
+    /* Metric cards */
     .metric{grid-column:span 4; padding:14px; box-shadow:none}
     .metric:hover{transform:none; border-color:var(--border); box-shadow:none}
     @media(max-width:980px){.metric{grid-column:span 6}}
@@ -181,69 +190,18 @@
     .metric .num{font-size:22px; font-weight:950; letter-spacing:-.3px}
     .metric .lbl{margin-top:6px; font-size:12px; color:var(--muted); line-height:1.4}
 
-    /* Case + dashboard */
-    .case-left{grid-column:span 7}
-    .case-right{grid-column:span 5}
-    @media(max-width:980px){.case-left,.case-right{grid-column:span 12}}
-    ul{margin:10px 0 0 18px; color:var(--muted); line-height:1.6}
-    li{margin:6px 0}
-
+    /* Callout */
     .callout{
-      border:1px solid rgba(111,255,210,.25);
-      background:rgba(111,255,210,.07);
+      border:1px solid rgba(124,255,221,.28);
+      background:rgba(124,255,221,.08);
       padding:14px 14px 12px;
       border-radius:16px;
     }
     .callout strong{display:block; margin-bottom:6px}
 
-    .media{
-      border:1px dashed rgba(255,255,255,.18);
-      background:rgba(255,255,255,.02);
-      border-radius:16px;
-      padding:14px;
-      overflow:hidden;
-    }
-    .media img{
-      width:100%; height:auto; display:block;
-      border-radius:12px;
-    }
-    .media .cap{margin-top:10px; font-size:12px; color:var(--muted)}
-    .media .cap b{color:rgba(255,255,255,.85)}
-
-    /* Dashboard mock */
-    .dash-wrap{display:grid; grid-template-columns: 1fr; gap:12px}
-    .dash-top{display:flex; gap:10px; flex-wrap:wrap}
-    .filter{
-      font-size:12px;
-      padding:8px 10px;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:999px;
-      color:rgba(255,255,255,.85);
-      background:rgba(255,255,255,.03);
-    }
-    .kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:2px}
-    @media(max-width:980px){.kpis{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:560px){.kpis{grid-template-columns:1fr}}
-    .kpi{
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.03);
-      border-radius:16px;
-      padding:12px;
-    }
-    .kpi .k{font-size:11px; color:rgba(255,255,255,.78); font-family:var(--mono)}
-    .kpi .v{font-size:18px; font-weight:950; margin-top:6px}
-    .kpi .d{font-size:12px; color:var(--muted); margin-top:6px; line-height:1.45}
-
-    .dash-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:12px}
-    @media(max-width:980px){.dash-grid{grid-template-columns:1fr}}
-    .chart{
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.02);
-      border-radius:16px;
-      padding:12px;
-    }
-    .chart h4{margin:0 0 10px; font-size:12px; color:rgba(255,255,255,.86); letter-spacing:.2px}
-    .chart svg{width:100%; height:auto; display:block}
+    /* Lists */
+    ul{margin:10px 0 0 18px; color:var(--muted); line-height:1.6}
+    li{margin:6px 0}
 
     /* Experience cards */
     .xp{grid-column:span 6}
@@ -254,11 +212,86 @@
     .xp p{margin:8px 0 0; color:var(--muted); line-height:1.6; font-size:13px}
     .mini{margin-top:10px; display:flex; flex-wrap:wrap; gap:8px}
 
+    /* Dashboard mock */
+    .dash-top{display:flex; gap:10px; flex-wrap:wrap}
+    .filter{
+      font-size:12px;
+      padding:8px 10px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      color:rgba(255,255,255,.88);
+      background:rgba(255,255,255,.04);
+    }
+    .kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px}
+    @media(max-width:980px){.kpis{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.kpis{grid-template-columns:1fr}}
+    .kpi{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:16px;
+      padding:12px;
+    }
+    .kpi .k{font-size:11px; color:rgba(255,255,255,.80); font-family:var(--mono)}
+    .kpi .v{font-size:18px; font-weight:950; margin-top:6px}
+    .kpi .d{font-size:12px; color:var(--muted); margin-top:6px; line-height:1.45}
+
+    .dash-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:12px; margin-top:12px}
+    @media(max-width:980px){.dash-grid{grid-template-columns:1fr}}
+
+    .chart{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
+      border-radius:16px;
+      padding:12px;
+    }
+    .chart h4{margin:0 0 10px; font-size:12px; color:rgba(255,255,255,.88); letter-spacing:.2px}
+    .chart svg{width:100%; height:auto; display:block}
+
+    .media{
+      border:1px dashed rgba(255,255,255,.20);
+      background:rgba(255,255,255,.03);
+      border-radius:16px;
+      padding:14px;
+      overflow:hidden;
+      margin-top:12px;
+    }
+    .media img{
+      width:100%; height:auto; display:block;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .media .cap{margin-top:10px; font-size:12px; color:var(--muted)}
+    .media .cap b{color:rgba(255,255,255,.88)}
+
     /* Skills blocks */
     .skill{grid-column:span 4}
     @media(max-width:980px){.skill{grid-column:span 6}}
     @media(max-width:560px){.skill{grid-column:span 12}}
 
+    /* Software tiles (visual interest) */
+    .tiles{display:grid; grid-template-columns:repeat(6, 1fr); gap:10px; margin-top:12px}
+    @media(max-width:980px){.tiles{grid-template-columns:repeat(3, 1fr)}}
+    @media(max-width:560px){.tiles{grid-template-columns:repeat(2, 1fr)}}
+    .tile{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:16px;
+      padding:12px;
+      display:flex; gap:10px; align-items:center;
+    }
+    .ico{
+      width:34px; height:34px; border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--mono);
+      font-weight:950;
+      color:#071022;
+      box-shadow: 0 10px 24px rgba(0,0,0,.30);
+      flex:0 0 auto;
+    }
+    .tname{font-weight:900; font-size:12px}
+    .tdesc{font-size:11px; color:var(--muted); margin-top:2px; line-height:1.35}
+
+    /* Footer */
     .footer{
       margin-top:24px; padding-top:18px;
       border-top:1px solid var(--border);
@@ -277,10 +310,13 @@
         <span>Finance • Analytics • Banking • Product Systems • SARVA</span>
       </div>
       <div class="links">
-        <a class="pill" href="#work">Work</a>
+        <a class="pill" href="#work">Highlights</a>
         <a class="pill" href="#dashboard">Dashboards</a>
-        <a class="pill" href="#research">Research</a>
+        <a class="pill" href="#experience">Experience</a>
+        <a class="pill" href="#education">Education</a>
+        <a class="pill" href="#awards">Awards</a>
         <a class="pill" href="#skills">Skills</a>
+        <a class="pill" href="#hobbies">Hobbies</a>
         <a class="pill" href="#contact">Contact</a>
       </div>
     </div>
@@ -291,25 +327,23 @@
     <header class="grid" id="top">
       <div class="card hero-left">
         <div class="hero-top">
-          <!-- PHOTO: put your image in the repo and update src -->
-          <div class="avatar" title="Add your photo">
-            <!-- Example: <img src="assets/farhan.jpg" alt="Farhan Azim Aurronoy" /> -->
-            <img src="assets/farhan.jpg" alt="Farhan Azim Aurronoy" onerror="this.remove()" />
+          <div class="avatar" title="Farhan headshot">
+            <img src="assets/farhan.jpg" alt="Farhan Azim Aurronoy" />
           </div>
 
-          <div style="flex:1">
+          <div style="flex:1; min-width:260px">
             <div class="kicker"><span class="dot"></span><span>Finance-first analytics • pricing • dashboards • decision support</span></div>
             <h1>Data that makes decisions easier.</h1>
             <p class="sub">
-              I work across <b>finance</b>, <b>analytics</b>, <b>banking fundamentals</b>, and <b>product systems</b>—building dashboards,
-              automating reporting, and turning messy data into clear recommendations. I also support strategy and unit economics as a Founder/CFO at <b>SARVA</b>.
+              I work across <b>finance</b>, <b>analytics</b>, <b>banking</b>, and <b>product systems</b>—building dashboards,
+              automating reporting, and translating messy data into clear recommendations. I also own finance and analytics as a Founder/CFO at <b>SARVA</b>.
             </p>
 
             <div class="cta">
               <a class="btn primary" href="#dashboard">See Dashboard Work</a>
+              <a class="btn mint" href="https://drive.google.com/drive/folders/1nNoeXYlTxyPwyd4V-aWjdqNkV15dQgBt?usp=drive_link" target="_blank" rel="noreferrer">Research & Presentations</a>
               <a class="btn" href="https://linkedin.com/in/farhanazimaurronoy/" target="_blank" rel="noreferrer">LinkedIn</a>
               <a class="btn" href="mailto:farhanazim2015@gmail.com">Email</a>
-              <a class="btn ghost" href="https://drive.google.com/drive/folders/1nNoeXYlTxyPwyd4V-aWjdqNkV15dQgBt?usp=drive_link" target="_blank" rel="noreferrer">Research & Presentations</a>
               <a class="btn" href="#" target="_blank" rel="noreferrer">Resume (PDF)</a>
             </div>
 
@@ -319,6 +353,7 @@
               <span class="tag">Power BI</span>
               <span class="tag">SQL</span>
               <span class="tag">Excel (Advanced)</span>
+              <span class="tag">Financial modeling</span>
               <span class="tag">Pricing analytics</span>
               <span class="tag">KPI design</span>
               <span class="tag">Credit + risk</span>
@@ -337,261 +372,388 @@
         <div class="grid" style="gap:10px">
           <div class="card metric">
             <div class="num">$200K+</div>
-            <div class="lbl">Projected annual savings surfaced via rate-method analysis (Power BI + SQL)</div>
+            <div class="lbl">Projected annual savings identified via rate-method analysis (Power BI + SQL + Excel)</div>
           </div>
           <div class="card metric">
             <div class="num">30%+</div>
-            <div class="lbl">Manual reporting reduced by automating pipelines + KPI reporting</div>
+            <div class="lbl">Manual reporting reduced by automating SQL pipelines + KPI reporting</div>
           </div>
           <div class="card metric">
             <div class="num">1,500+</div>
-            <div class="lbl">Customer profiles analyzed to measure demand patterns & sensitivity</div>
+            <div class="lbl">Customer profiles analyzed to measure demand patterns & pricing sensitivity</div>
           </div>
         </div>
 
         <div class="divider"></div>
 
         <div class="callout">
-          <strong>What this page does</strong>
+          <strong>How I show my work</strong>
           <div class="muted" style="font-size:13px; line-height:1.6">
-            One clean place to see how I work across analytics, finance, banking, and startup operations—without fluff.
+            Clean dashboards, clear assumptions, and outcomes tied to cost, risk, or growth.
           </div>
         </div>
       </div>
     </header>
 
-    <!-- WORK -->
+    <!-- HIGHLIGHTS -->
     <section id="work">
       <div class="section-head">
         <h2>Highlights</h2>
-        <span>diverse skill set, one story: decision support</span>
+        <span>one theme: decision support</span>
       </div>
 
       <div class="grid">
-        <div class="card case-left">
-          <h3 style="margin:0 0 6px; font-size:18px; letter-spacing:-.2px">SARVA (Founder/CFO): Unit economics + operating metrics</h3>
+        <div class="card" style="grid-column:span 7">
+          <h3 style="margin:0 0 6px; font-size:18px">SARVA (Co-Founder, CFO): finance + analytics ownership</h3>
           <p class="sub" style="margin-top:8px">
-            I apply a finance + analytics lens to a real supply chain problem—tracking CAC/LTV, margin, fulfillment, retention,
-            and turning assumptions into KPI systems the team can actually run.
+            Built forecasting and KPI systems to guide growth planning and operational trade-offs, informed by vendor and customer analysis.
           </p>
           <ul>
-            <li>Built and maintained forecast + scenarios to guide runway and prioritization.</li>
-            <li>Defined KPI frameworks (growth vs margin, incentives vs sustainability) and reporting cadence.</li>
-            <li>Supported pitches with decision-ready models and narrative clarity.</li>
+            <li>Owned <b>5-year forecasting</b>, unit economics, burn/runway, and scenario analysis for planning and capital allocation.</li>
+            <li>Designed internal dashboards tracking <b>CAC, LTV, margins, fulfillment rates</b>, and core operational KPIs.</li>
+            <li>Analyzed <b>50+ vendors</b> and <b>1,500+ customer profiles</b> to surface demand trends and pricing sensitivity.</li>
           </ul>
           <div class="badge-row">
-            <span class="tag">Forecasting</span><span class="tag">Unit economics</span><span class="tag">Pricing</span><span class="tag">KPI systems</span>
+            <span class="tag">Forecasting</span><span class="tag">Unit economics</span><span class="tag">Pricing</span><span class="tag">Dashboards</span>
           </div>
         </div>
 
-        <div class="card case-right">
-          <h3 style="margin:0 0 6px; font-size:18px; letter-spacing:-.2px">Banking: Credit + portfolio support (SME)</h3>
+        <div class="card" style="grid-column:span 5">
+          <h3 style="margin:0 0 6px; font-size:18px">Banking (SME): credit + portfolio support</h3>
           <p class="sub" style="margin-top:8px">
-            Worked on credit support and portfolio review—financial statement checks, basic risk indicators, and compliance-aware documentation.
+            Supported relationship work with financial review and risk checks for small and medium enterprises.
           </p>
           <ul>
-            <li>Loan application support and documentation checks.</li>
-            <li>Credit/risk review inputs for relationship decisions.</li>
-            <li>Portfolio-level exposure awareness and client support.</li>
+            <li>Supported <b>2 relationship managers</b> serving SME clients.</li>
+            <li>Expanded relationships with <b>4 key clients</b>, supporting <b>$60K+</b> in loan extensions.</li>
+            <li>Performed financial and risk assessments for loan applications (compliance-aware).</li>
           </ul>
           <div class="badge-row">
-            <span class="tag">Credit analysis</span><span class="tag">Risk</span><span class="tag">SME</span><span class="tag">Financials</span>
+            <span class="tag">Credit analysis</span><span class="tag">Risk</span><span class="tag">SME</span>
           </div>
+        </div>
+
+        <div class="card" style="grid-column:span 12">
+          <div class="section-head" style="margin-top:0">
+            <h2 style="font-size:14px">Software I Use</h2>
+            <span>visual snapshot</span>
+          </div>
+
+          <div class="tiles">
+            <div class="tile">
+              <div class="ico" style="background:linear-gradient(135deg, rgba(104,163,255,1), rgba(124,255,221,.9))">PB</div>
+              <div>
+                <div class="tname">Power BI</div>
+                <div class="tdesc">Dashboards, slicing, exec reporting</div>
+              </div>
+            </div>
+            <div class="tile">
+              <div class="ico" style="background:linear-gradient(135deg, rgba(124,255,221,1), rgba(176,124,255,.85))">XL</div>
+              <div>
+                <div class="tname">Excel</div>
+                <div class="tdesc">Financial modeling + automation</div>
+              </div>
+            </div>
+            <div class="tile">
+              <div class="ico" style="background:linear-gradient(135deg, rgba(176,124,255,1), rgba(104,163,255,.85))">SQL</div>
+              <div>
+                <div class="tname">SQL</div>
+                <div class="tdesc">Pipelines, joins, analysis-ready data</div>
+              </div>
+            </div>
+            <div class="tile">
+              <div class="ico" style="background:linear-gradient(135deg, rgba(104,163,255,1), rgba(176,124,255,.85))">HS</div>
+              <div>
+                <div class="tname">HubSpot</div>
+                <div class="tdesc">Workflow automation, reporting</div>
+              </div>
+            </div>
+            <div class="tile">
+              <div class="ico" style="background:linear-gradient(135deg, rgba(124,255,221,1), rgba(104,163,255,.85))">NS</div>
+              <div>
+                <div class="tname">NetSuite</div>
+                <div class="tdesc">ERP exposure + business systems</div>
+              </div>
+            </div>
+            <div class="tile">
+              <div class="ico" style="background:linear-gradient(135deg, rgba(176,124,255,1), rgba(124,255,221,.85))">AZ</div>
+              <div>
+                <div class="tname">Azure DevOps</div>
+                <div class="tdesc">Tickets, ops coordination, delivery</div>
+              </div>
+            </div>
+          </div>
+
+          <p class="sub" style="margin-top:12px">
+            If you want this even more “real,” replace these tiles with screenshots of your actual dashboards/tools.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- DASHBOARD (Power BI mock) -->
+    <!-- DASHBOARDS -->
     <section id="dashboard">
       <div class="section-head">
         <h2>Dashboards</h2>
-        <span>Power BI-style view (rates analysis project)</span>
+        <span>rates analysis (Power BI-style)</span>
       </div>
 
       <div class="grid">
         <div class="card" style="grid-column:span 12">
-          <h3 style="margin:0 0 6px; font-size:18px">Rates Analysis Dashboard (Mock)</h3>
+          <h3 style="margin:0 0 6px; font-size:18px">Rates Analysis Dashboard (Layout + Story)</h3>
           <p class="sub" style="margin-top:8px">
-            Project: comparing <b>current vs future state medical rates</b> (tiered N1–N4) using SQL + Power BI.
-            Below is a clean mock of the dashboard layout recruiters expect. Replace with a real screenshot anytime.
+            Comparing <b>current vs future state medical rates</b> across tiers (N1–N4) and different methods (conference code vs ZIP prefix).
+            Built to be exec-friendly: variance, dispersion hotspots, and decision-ready takeaways.
           </p>
 
           <div class="divider"></div>
 
-          <div class="dash-wrap">
-            <div class="dash-top">
-              <span class="filter">Filter: Plan Year</span>
-              <span class="filter">Filter: Tier (N1–N4)</span>
-              <span class="filter">Filter: Region / ZIP Prefix</span>
-              <span class="filter">Filter: Conference Code</span>
+          <div class="dash-top">
+            <span class="filter">Filter: Plan Year</span>
+            <span class="filter">Filter: Tier (N1–N4)</span>
+            <span class="filter">Filter: Region / ZIP Prefix</span>
+            <span class="filter">Filter: Conference Code</span>
+          </div>
+
+          <div class="kpis">
+            <div class="kpi">
+              <div class="k">Projected Savings</div>
+              <div class="v">$200K+</div>
+              <div class="d">Methodology comparison + dispersion controls.</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Coverage Rows</div>
+              <div class="v">~1.8K</div>
+              <div class="d">Active coverage filtered (EndDate null/future).</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Dispersion Focus</div>
+              <div class="v">High-spread</div>
+              <div class="d">Segments where rate variance drives cost risk.</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Automation Impact</div>
+              <div class="v">30%+</div>
+              <div class="d">Repeatable pipeline → refreshable reporting.</div>
+            </div>
+          </div>
+
+          <div class="dash-grid">
+            <div class="chart">
+              <h4>Current vs Future Rates by Tier (Bar)</h4>
+              <svg viewBox="0 0 640 240" role="img" aria-label="Bar chart mock">
+                <rect x="0" y="0" width="640" height="240" fill="rgba(255,255,255,.02)"/>
+                <line x1="50" y1="200" x2="620" y2="200" stroke="rgba(255,255,255,.20)" />
+                <line x1="50" y1="30" x2="50" y2="200" stroke="rgba(255,255,255,.20)" />
+                <rect x="90"  y="120" width="36" height="80"  fill="rgba(104,163,255,.78)"/>
+                <rect x="132" y="105" width="36" height="95"  fill="rgba(124,255,221,.55)"/>
+                <rect x="220" y="95"  width="36" height="105" fill="rgba(104,163,255,.78)"/>
+                <rect x="262" y="80"  width="36" height="120" fill="rgba(124,255,221,.55)"/>
+                <rect x="350" y="75"  width="36" height="125" fill="rgba(104,163,255,.78)"/>
+                <rect x="392" y="65"  width="36" height="135" fill="rgba(124,255,221,.55)"/>
+                <rect x="480" y="55"  width="36" height="145" fill="rgba(104,163,255,.78)"/>
+                <rect x="522" y="45"  width="36" height="155" fill="rgba(124,255,221,.55)"/>
+                <text x="108" y="220" fill="rgba(255,255,255,.74)" font-size="12" text-anchor="middle">N1</text>
+                <text x="238" y="220" fill="rgba(255,255,255,.74)" font-size="12" text-anchor="middle">N2</text>
+                <text x="368" y="220" fill="rgba(255,255,255,.74)" font-size="12" text-anchor="middle">N3</text>
+                <text x="498" y="220" fill="rgba(255,255,255,.74)" font-size="12" text-anchor="middle">N4</text>
+                <text x="520" y="24" fill="rgba(255,255,255,.58)" font-size="11">Legend:</text>
+                <rect x="575" y="15" width="10" height="10" fill="rgba(104,163,255,.78)"/><text x="590" y="24" fill="rgba(255,255,255,.58)" font-size="11">Current</text>
+                <rect x="575" y="30" width="10" height="10" fill="rgba(124,255,221,.55)"/><text x="590" y="39" fill="rgba(255,255,255,.58)" font-size="11">Future</text>
+              </svg>
             </div>
 
-            <div class="kpis">
-              <div class="kpi">
-                <div class="k">Projected Savings</div>
-                <div class="v">$200K+</div>
-                <div class="d">Estimated impact from methodology shift + dispersion controls.</div>
-              </div>
-              <div class="kpi">
-                <div class="k">Rate Dispersion</div>
-                <div class="v">↓ Variance</div>
-                <div class="d">Identified high-spread segments driving overpayment risk.</div>
-              </div>
-              <div class="kpi">
-                <div class="k">Coverage Rows</div>
-                <div class="v">~1.8K</div>
-                <div class="d">Active coverage filtered (EndDate null / future).</div>
-              </div>
-              <div class="kpi">
-                <div class="k">Automation Gain</div>
-                <div class="v">30%+</div>
-                <div class="d">Less manual reporting via repeatable SQL + PBI refresh.</div>
-              </div>
+            <div class="chart">
+              <h4>Dispersion Hotspots (Scatter)</h4>
+              <svg viewBox="0 0 640 240" role="img" aria-label="Scatter chart mock">
+                <rect x="0" y="0" width="640" height="240" fill="rgba(255,255,255,.02)"/>
+                <line x1="50" y1="200" x2="620" y2="200" stroke="rgba(255,255,255,.20)" />
+                <line x1="50" y1="30" x2="50" y2="200" stroke="rgba(255,255,255,.20)" />
+                <circle cx="140" cy="150" r="6" fill="rgba(104,163,255,.78)"/>
+                <circle cx="210" cy="130" r="5" fill="rgba(124,255,221,.55)"/>
+                <circle cx="280" cy="120" r="6" fill="rgba(104,163,255,.78)"/>
+                <circle cx="360" cy="95"  r="7" fill="rgba(124,255,221,.55)"/>
+                <circle cx="430" cy="110" r="5" fill="rgba(104,163,255,.78)"/>
+                <circle cx="520" cy="70"  r="8" fill="rgba(124,255,221,.55)"/>
+                <text x="60" y="24" fill="rgba(255,255,255,.58)" font-size="11">Higher variance segments pop here</text>
+              </svg>
             </div>
+          </div>
 
-            <div class="dash-grid">
-              <div class="chart">
-                <h4>Current vs Future Rates by Tier (Bar)</h4>
-                <!-- simple SVG bar chart mock -->
-                <svg viewBox="0 0 640 240" role="img" aria-label="Bar chart mock">
-                  <rect x="0" y="0" width="640" height="240" fill="rgba(255,255,255,.02)"/>
-                  <!-- axes -->
-                  <line x1="50" y1="200" x2="620" y2="200" stroke="rgba(255,255,255,.18)" />
-                  <line x1="50" y1="30" x2="50" y2="200" stroke="rgba(255,255,255,.18)" />
-                  <!-- bars: current (left) vs future (right) per tier -->
-                  <!-- N1 -->
-                  <rect x="90"  y="120" width="36" height="80" fill="rgba(79,140,255,.75)"/>
-                  <rect x="132" y="105" width="36" height="95" fill="rgba(111,255,210,.55)"/>
-                  <!-- N2 -->
-                  <rect x="220" y="95"  width="36" height="105" fill="rgba(79,140,255,.75)"/>
-                  <rect x="262" y="80"  width="36" height="120" fill="rgba(111,255,210,.55)"/>
-                  <!-- N3 -->
-                  <rect x="350" y="75"  width="36" height="125" fill="rgba(79,140,255,.75)"/>
-                  <rect x="392" y="65"  width="36" height="135" fill="rgba(111,255,210,.55)"/>
-                  <!-- N4 -->
-                  <rect x="480" y="55"  width="36" height="145" fill="rgba(79,140,255,.75)"/>
-                  <rect x="522" y="45"  width="36" height="155" fill="rgba(111,255,210,.55)"/>
-                  <!-- labels -->
-                  <text x="108" y="220" fill="rgba(255,255,255,.70)" font-size="12" text-anchor="middle">N1</text>
-                  <text x="238" y="220" fill="rgba(255,255,255,.70)" font-size="12" text-anchor="middle">N2</text>
-                  <text x="368" y="220" fill="rgba(255,255,255,.70)" font-size="12" text-anchor="middle">N3</text>
-                  <text x="498" y="220" fill="rgba(255,255,255,.70)" font-size="12" text-anchor="middle">N4</text>
-
-                  <text x="520" y="24" fill="rgba(255,255,255,.55)" font-size="11">Legend:</text>
-                  <rect x="575" y="15" width="10" height="10" fill="rgba(79,140,255,.75)"/><text x="590" y="24" fill="rgba(255,255,255,.55)" font-size="11">Current</text>
-                  <rect x="575" y="30" width="10" height="10" fill="rgba(111,255,210,.55)"/><text x="590" y="39" fill="rgba(255,255,255,.55)" font-size="11">Future</text>
-                </svg>
-              </div>
-
-              <div class="chart">
-                <h4>Dispersion Hotspots (Scatter)</h4>
-                <svg viewBox="0 0 640 240" role="img" aria-label="Scatter chart mock">
-                  <rect x="0" y="0" width="640" height="240" fill="rgba(255,255,255,.02)"/>
-                  <line x1="50" y1="200" x2="620" y2="200" stroke="rgba(255,255,255,.18)" />
-                  <line x1="50" y1="30" x2="50" y2="200" stroke="rgba(255,255,255,.18)" />
-                  <!-- points -->
-                  <circle cx="140" cy="150" r="6" fill="rgba(79,140,255,.70)"/>
-                  <circle cx="210" cy="130" r="5" fill="rgba(111,255,210,.55)"/>
-                  <circle cx="280" cy="120" r="6" fill="rgba(79,140,255,.70)"/>
-                  <circle cx="360" cy="95"  r="7" fill="rgba(111,255,210,.55)"/>
-                  <circle cx="430" cy="110" r="5" fill="rgba(79,140,255,.70)"/>
-                  <circle cx="520" cy="70"  r="8" fill="rgba(111,255,210,.55)"/>
-                  <text x="60" y="24" fill="rgba(255,255,255,.55)" font-size="11">Higher variance segments pop here</text>
-                </svg>
-              </div>
-            </div>
-
-            <div class="media">
-              <!-- OPTIONAL: replace with a real screenshot of your Power BI dashboard -->
-              <!-- <img src="assets/rates-dashboard.png" alt="Power BI dashboard screenshot" /> -->
-              <div class="cap"><b>Upgrade tip:</b> export one Power BI page as PNG and save it as <span class="mono">assets/rates-dashboard.png</span>, then uncomment the img tag above.</div>
+          <div class="media">
+            <!-- OPTIONAL: add a real screenshot later -->
+            <!-- <img src="assets/rates-dashboard.png" alt="Rates Analysis Power BI Dashboard Screenshot" /> -->
+            <div class="cap">
+              <b>Make this “real” in 30 seconds:</b> export one Power BI page as PNG, save as <span class="mono">assets/rates-dashboard.png</span>,
+              then uncomment the <span class="mono">&lt;img&gt;</span> line above.
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- RESEARCH -->
-    <section id="research">
+    <!-- EXPERIENCE -->
+    <section id="experience">
       <div class="section-head">
-        <h2>Research & Presentations</h2>
-        <span>papers, decks, and project write-ups</span>
+        <h2>Experience</h2>
+        <span>tight + outcome-driven</span>
+      </div>
+
+      <div class="grid">
+        <div class="card xp">
+          <div class="top">
+            <strong>The Pension Boards – UCC · FinTech Business Analyst Intern</strong>
+            <em>Jun 2025 – Aug 2025</em>
+          </div>
+          <p>
+            Led financial/statistical analysis in <b>Power BI, SQL, and Excel</b> to evaluate pricing models; identified <b>$200K+</b> projected annual cost savings.
+            Automated SQL reporting pipelines and KPI frameworks, reducing manual reporting by <b>30%</b>.
+          </p>
+          <div class="mini">
+            <span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Excel</span><span class="tag">Pricing</span><span class="tag">KPIs</span>
+          </div>
+        </div>
+
+        <div class="card xp">
+          <div class="top">
+            <strong>SARVA · Co-Founder, CFO</strong>
+            <em>Jan 2025 – Present</em>
+          </div>
+          <p>
+            Owned finance + analytics: forecasting, unit economics, burn/runway, scenario analysis.
+            Built internal dashboards tracking CAC/LTV/margins and analyzed vendor/customer data to surface demand trends and pricing sensitivity.
+          </p>
+          <div class="mini">
+            <span class="tag">Forecasting</span><span class="tag">Unit economics</span><span class="tag">Dashboards</span><span class="tag">Ops KPIs</span>
+          </div>
+        </div>
+
+        <div class="card xp">
+          <div class="top">
+            <strong>Qi Meta · IT Business Analyst Intern</strong>
+            <em>Aug 2024 – Dec 2024</em>
+          </div>
+          <p>
+            Automated customer acquisition workflows in <b>HubSpot</b>, improving lead tracking and conversion efficiency by <b>25%</b>.
+            Conducted segmentation analysis to identify high-value clusters and improved campaign reporting.
+          </p>
+          <div class="mini">
+            <span class="tag">HubSpot</span><span class="tag">Automation</span><span class="tag">Segmentation</span><span class="tag">Reporting</span>
+          </div>
+        </div>
+
+        <div class="card xp">
+          <div class="top">
+            <strong>Bangladesh Agricultural Development Corporation (BADC) · Financial Analyst Intern</strong>
+            <em>Jun 2024 – Aug 2024</em>
+          </div>
+          <p>
+            Conducted financial analysis and supported policy recommendations improving resource allocation.
+            Contributed to agricultural initiatives supporting <b>22+ farmers</b> and boosting efficiency by <b>15%</b>.
+          </p>
+          <div class="mini">
+            <span class="tag">Financial analysis</span><span class="tag">Policy support</span><span class="tag">Ops planning</span>
+          </div>
+        </div>
+
+        <div class="card xp">
+          <div class="top">
+            <strong>ONE Bank Limited · Commercial Banking Intern (SME)</strong>
+            <em>Jun 2023 – Aug 2023</em>
+          </div>
+          <p>
+            Supported SME relationship management and contributed to <b>$60K+</b> in loan extensions through relationship expansion.
+            Conducted financial analysis and risk assessments for loan applications and supported portfolio review.
+          </p>
+          <div class="mini">
+            <span class="tag">Credit</span><span class="tag">Risk</span><span class="tag">SME</span><span class="tag">Portfolio</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-head">
+        <h2>Education</h2>
+        <span>academics that support the skill stack</span>
       </div>
 
       <div class="grid">
         <div class="card" style="grid-column:span 12">
-          <p class="sub" style="margin:0">
-            I keep my research papers and presentation decks organized here:
+          <h3 style="margin:0 0 6px; font-size:18px">Dickinson College</h3>
+          <p class="sub" style="margin-top:8px">
+            BA in <b>Quantitative Economics</b> • Expected Graduation: <b>May 2026</b>
           </p>
-          <div class="cta" style="margin-top:12px">
-            <a class="btn primary" href="https://drive.google.com/drive/folders/1nNoeXYlTxyPwyd4V-aWjdqNkV15dQgBt?usp=drive_link" target="_blank" rel="noreferrer">
-              Open Research & Presentations Folder
-            </a>
-            <a class="btn" href="#contact">Contact me</a>
+
+          <div class="divider"></div>
+
+          <div class="section-head" style="margin-top:0">
+            <h2 style="font-size:14px">Relevant Coursework</h2>
+            <span class="mono">selected</span>
+          </div>
+
+          <div class="badge-row" style="margin-top:0">
+            <span class="tag">Econometrics</span>
+            <span class="tag">Finance</span>
+            <span class="tag">Investments</span>
+            <span class="tag">Intermediate Financial Accounting</span>
+            <span class="tag">Cost Accounting</span>
+            <span class="tag">Empirical Finance</span>
+            <span class="tag">Managerial Economics</span>
+            <span class="tag">Research in Development Economics</span>
+            <span class="tag">Product Development</span>
+            <span class="tag">Entrepreneurship</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE (tight) -->
-    <section id="experience">
+    <!-- AWARDS + LANGUAGES + TOOLS -->
+    <section id="awards">
       <div class="section-head">
-        <h2>Experience</h2>
-        <span>tight, outcome-driven</span>
+        <h2>Awards, Languages, Tools</h2>
+        <span>credibility + range</span>
       </div>
 
       <div class="grid">
-        <div class="card xp">
-          <div class="top">
-            <strong>The Pension Boards – UCC · Business Analyst (FinTech)</strong>
-            <em>Jun 2025 – Aug 2025</em>
-          </div>
-          <p>
-            Pricing + rate-method analysis using <b>Power BI, SQL, Excel</b>; surfaced <b>$200K+</b> projected annual savings.
-            Built executive dashboards and automated reporting pipelines, reducing manual work by <b>30%+</b>.
-          </p>
-          <div class="mini">
-            <span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Pricing</span><span class="tag">Dashboards</span>
-          </div>
+        <div class="card" style="grid-column:span 6">
+          <h3 style="margin:0 0 6px; font-size:16px">Awards & Achievements</h3>
+          <ul>
+            <li>Shippensburg Area Development Corporation “Ship Tank” – Finalist</li>
+            <li>BNY UpPrize Social Innovation Challenge – Semi Finalist</li>
+            <li>Pittsburgh Tech Week – Semi Finalist</li>
+            <li>Colton Alexander – Investment Banking Extern</li>
+          </ul>
         </div>
 
-        <div class="card xp">
-          <div class="top">
-            <strong>SARVA · Finance & Analytics (Founder / CFO)</strong>
-            <em>Jan 2025 – Present</em>
+        <div class="card" style="grid-column:span 6">
+          <h3 style="margin:0 0 6px; font-size:16px">Languages</h3>
+          <div class="badge-row" style="margin-top:10px">
+            <span class="tag">English (fluent)</span>
+            <span class="tag">Bengali (native)</span>
+            <span class="tag">Hindi (conversational)</span>
           </div>
-          <p>
-            Forecasting + unit economics + KPI systems for an early-stage startup. Analyzed <b>50+</b> vendors and <b>1,500+</b> customers to quantify
-            demand patterns and pricing sensitivity.
-          </p>
-          <div class="mini">
-            <span class="tag">Forecasting</span><span class="tag">Unit economics</span><span class="tag">KPI systems</span><span class="tag">Strategy</span>
-          </div>
-        </div>
 
-        <div class="card xp">
-          <div class="top">
-            <strong>QiMeta · Business Analyst</strong>
-            <em>Aug 2024 – Dec 2024</em>
-          </div>
-          <p>
-            Automated acquisition workflows in <b>HubSpot</b> and built recurring KPI reports; improved lead conversion efficiency by <b>25%</b>.
-          </p>
-          <div class="mini">
-            <span class="tag">HubSpot</span><span class="tag">Automation</span><span class="tag">Reporting</span>
-          </div>
-        </div>
+          <div class="divider"></div>
 
-        <div class="card xp">
-          <div class="top">
-            <strong>ONE Bank Limited · Commercial Banking Analyst (SME)</strong>
-            <em>Jun 2023 – Aug 2023</em>
-          </div>
-          <p>
-            Supported SME banking through financial statement review, credit/risk checks, and portfolio support; contributed to <b>$60K+</b> in loan extensions.
-          </p>
-          <div class="mini">
-            <span class="tag">Credit</span><span class="tag">Risk</span><span class="tag">SME</span>
+          <h3 style="margin:0 0 6px; font-size:16px">Tools</h3>
+          <div class="badge-row" style="margin-top:10px">
+            <span class="tag">Power BI</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Excel (Advanced)</span>
+            <span class="tag">R</span>
+            <span class="tag">Python</span>
+            <span class="tag">Stata</span>
+            <span class="tag">GIS</span>
+            <span class="tag">HubSpot</span>
+            <span class="tag">NetSuite</span>
+            <span class="tag">Azure DevOps</span>
+            <span class="tag">MS365</span>
+            <span class="tag">GoAnywhere</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Canva</span>
+            <span class="tag">Financial modeling</span>
           </div>
         </div>
       </div>
@@ -607,43 +769,65 @@
       <div class="grid">
         <div class="card skill">
           <strong>Analytics</strong>
-          <div>
+          <div class="badge-row">
             <span class="tag">Power BI</span>
             <span class="tag">SQL</span>
             <span class="tag">Excel</span>
-            <span class="tag">R</span>
-            <span class="tag">Stata</span>
+            <span class="tag">Dashboards</span>
+            <span class="tag">KPI design</span>
           </div>
         </div>
 
         <div class="card skill">
           <strong>Finance</strong>
-          <div>
+          <div class="badge-row">
             <span class="tag">Forecasting</span>
+            <span class="tag">Scenario analysis</span>
             <span class="tag">Unit economics</span>
             <span class="tag">Pricing</span>
-            <span class="tag">Scenario modeling</span>
+            <span class="tag">Financial modeling</span>
           </div>
         </div>
 
         <div class="card skill">
-          <strong>Systems + Product</strong>
-          <div>
-            <span class="tag">KPI design</span>
-            <span class="tag">Automation</span>
+          <strong>Delivery</strong>
+          <div class="badge-row">
             <span class="tag">Stakeholder reporting</span>
-            <span class="tag">HubSpot</span>
+            <span class="tag">Cross-functional work</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Process improvement</span>
           </div>
         </div>
 
         <div class="card" style="grid-column:span 12">
           <div class="callout">
-            <strong>What ties everything together</strong>
+            <strong>Quick positioning</strong>
             <div class="muted" style="font-size:13px; line-height:1.6">
-              I’m comfortable moving between finance logic, data cleaning, dashboards, and stakeholder communication—
-              so the analysis actually lands and drives action.
+              I’m not locked into one title — I can move between finance logic, data cleaning, dashboards, and stakeholder communication so analysis turns into action.
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOBBIES -->
+    <section id="hobbies">
+      <div class="section-head">
+        <h2>Hobbies</h2>
+        <span>outside of work</span>
+      </div>
+
+      <div class="grid">
+        <div class="card" style="grid-column:span 12">
+          <div class="badge-row" style="margin-top:0">
+            <span class="tag">Cooking</span>
+            <span class="tag">Singing</span>
+            <span class="tag">Soccer</span>
+            <span class="tag">Hiking</span>
+          </div>
+          <p class="sub" style="margin-top:12px">
+            I like hobbies that keep me grounded and energetic — and they usually make teamwork and consistency feel natural.
+          </p>
         </div>
       </div>
     </section>
@@ -660,10 +844,12 @@
           <div class="cta" style="margin-top:0">
             <a class="btn primary" href="mailto:farhanazim2015@gmail.com">Email</a>
             <a class="btn" href="https://linkedin.com/in/farhanazimaurronoy/" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a class="btn ghost" href="https://drive.google.com/drive/folders/1nNoeXYlTxyPwyd4V-aWjdqNkV15dQgBt?usp=drive_link" target="_blank" rel="noreferrer">Research Folder</a>
+            <a class="btn mint" href="https://drive.google.com/drive/folders/1nNoeXYlTxyPwyd4V-aWjdqNkV15dQgBt?usp=drive_link" target="_blank" rel="noreferrer">Research Folder</a>
             <a class="btn" href="#top">Back to top</a>
           </div>
+
           <div class="divider"></div>
+
           <div class="muted2" style="font-size:12px; line-height:1.7">
             <span class="mono">Location:</span> Carlisle, PA •
             <span class="mono">Email:</span> farhanazim2015@gmail.com
