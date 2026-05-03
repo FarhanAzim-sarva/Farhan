@@ -1,356 +1,975 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/index.html b/index.html
-index 193a0c86e5047e58e4fcf9bc591790c77875e978..5fd0fd2955b703670d062dbd49f222a8ed580f1c 100644
---- a/index.html
-+++ b/index.html
-@@ -1,70 +1,100 @@
- <!doctype html>
- <html lang="en">
--<head>
--  <meta charset="utf-8" />
--  <meta name="viewport" content="width=device-width,initial-scale=1" />
--  <title>Farhan Azim Aurronoy | Finance • Analytics • Banking • Product Systems</title>
--  <meta name="description" content="Farhan Azim Aurronoy — finance-first analytics, pricing, dashboards, banking, and SARVA." />
--
--  <style>
-+<head>
-+  <meta charset="utf-8" />
-+  <meta name="viewport" content="width=device-width,initial-scale=1" />
-+  <title>Farhan Azim Aurronoy | Finance • Analytics • Banking • Product Systems</title>
-+  <meta name="description" content="Farhan Azim Aurronoy — finance-first analytics, pricing, dashboards, banking, and SARVA." />
-+  <meta name="robots" content="index,follow,max-image-preview:large" />
-+  <meta name="theme-color" content="#060913" />
-+  <meta property="og:type" content="website" />
-+  <meta property="og:title" content="Farhan Azim Aurronoy | Finance • Analytics • Banking • Product Systems" />
-+  <meta property="og:description" content="Finance-first analytics, pricing, dashboards, banking, and startup finance leadership." />
-+  <meta property="og:image" content="/assets/farhan.jpg" />
-+  <meta name="twitter:card" content="summary_large_image" />
-+  <meta name="twitter:title" content="Farhan Azim Aurronoy | Portfolio" />
-+  <meta name="twitter:description" content="Analytics and finance portfolio featuring dashboard, banking, and startup impact." />
-+  <meta name="twitter:image" content="/assets/farhan.jpg" />
-+
-+  <style>
-     :root{
-       /* Brighter, higher-contrast palette */
-       --bg:#060913;
-       --panel:#0B1326;
-       --panel2:#0A1022;
-       --text:#F2F7FF;
-       --muted:#B8C4D6;
-       --muted2:#8FA0B8;
- 
-       --accent:#68A3FF;     /* brighter blue */
-       --accent2:#7CFFDD;    /* brighter mint */
-       --accent3:#B07CFF;    /* violet pop */
-       --border:rgba(255,255,255,.12);
-       --shadow:0 16px 50px rgba(0,0,0,.50);
-       --radius:18px;
-       --max:1120px;
- 
-       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
-       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-     }
- 
--    *{box-sizing:border-box}
--    html{scroll-behavior:smooth}
--    body{
--      margin:0;
--      font-family:var(--sans);
-+    *{box-sizing:border-box}
-+    html{scroll-behavior:smooth}
-+    :focus-visible{
-+      outline:2px solid var(--accent2);
-+      outline-offset:2px;
-+    }
-+    body{
-+      margin:0;
-+      font-family:var(--sans);
-       color:var(--text);
-       background:
-         radial-gradient(1200px 700px at 15% -10%, rgba(104,163,255,.30), transparent 60%),
-         radial-gradient(900px 520px at 105% 10%, rgba(124,255,221,.16), transparent 55%),
-         radial-gradient(900px 520px at 55% 120%, rgba(176,124,255,.12), transparent 60%),
-         var(--bg);
-       line-height:1.55;
-     }
--    a{color:inherit; text-decoration:none}
--    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 70px}
-+    a{color:inherit; text-decoration:none}
-+    .skip-link{
-+      position:absolute;
-+      left:-9999px;
-+      top:0;
-+      z-index:999;
-+      background:#fff;
-+      color:#000;
-+      padding:10px 12px;
-+      border-radius:10px;
-+      font-size:13px;
-+      font-weight:800;
-+    }
-+    .skip-link:focus{
-+      left:14px;
-+      top:14px;
-+    }
-+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 70px}
- 
-     /* NAV */
-     .nav{
-       position:sticky; top:0; z-index:30;
-       backdrop-filter: blur(12px);
-       background:rgba(6,9,19,.70);
-       border-bottom:1px solid var(--border);
-     }
-     .nav-inner{
-       max-width:var(--max); margin:0 auto;
-       padding:14px 18px;
-       display:flex; align-items:center; justify-content:space-between; gap:14px;
-     }
-     .brand{display:flex; flex-direction:column; line-height:1.12}
-     .brand strong{font-size:14px; letter-spacing:.25px}
-     .brand span{font-size:12px; color:var(--muted)}
-     .links{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-     .pill{
-       font-size:12px; padding:8px 12px;
-       border:1px solid var(--border);
-       border-radius:999px;
-       background:rgba(255,255,255,.04);
-       transition:border-color .15s ease, transform .15s ease, background .15s ease;
-     }
-     .pill:hover{
-@@ -270,103 +300,129 @@
- 
-     /* Software tiles (visual interest) */
-     .tiles{display:grid; grid-template-columns:repeat(6, 1fr); gap:10px; margin-top:12px}
-     @media(max-width:980px){.tiles{grid-template-columns:repeat(3, 1fr)}}
-     @media(max-width:560px){.tiles{grid-template-columns:repeat(2, 1fr)}}
-     .tile{
-       border:1px solid rgba(255,255,255,.12);
-       background:rgba(255,255,255,.04);
-       border-radius:16px;
-       padding:12px;
-       display:flex; gap:10px; align-items:center;
-     }
-     .ico{
-       width:34px; height:34px; border-radius:12px;
-       display:flex; align-items:center; justify-content:center;
-       font-family:var(--mono);
-       font-weight:950;
-       color:#071022;
-       box-shadow: 0 10px 24px rgba(0,0,0,.30);
-       flex:0 0 auto;
-     }
-     .tname{font-weight:900; font-size:12px}
-     .tdesc{font-size:11px; color:var(--muted); margin-top:2px; line-height:1.35}
- 
-     /* Footer */
--    .footer{
--      margin-top:24px; padding-top:18px;
--      border-top:1px solid var(--border);
-+    .footer{
-+      margin-top:24px; padding-top:18px;
-+      border-top:1px solid var(--border);
-       color:var(--muted);
--      font-size:12px;
--      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
--    }
--  </style>
--</head>
--
--<body>
--  <div class="nav">
-+      font-size:12px;
-+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
-+    }
-+    @media (prefers-reduced-motion: reduce){
-+      html{scroll-behavior:auto}
-+      *,*::before,*::after{
-+        animation-duration:.01ms !important;
-+        animation-iteration-count:1 !important;
-+        transition-duration:.01ms !important;
-+      }
-+    }
-+  </style>
-+  <script type="application/ld+json">
-+    {
-+      "@context": "https://schema.org",
-+      "@type": "Person",
-+      "name": "Farhan Azim Aurronoy",
-+      "jobTitle": "Finance & Analytics Professional",
-+      "image": "/assets/farhan.jpg",
-+      "email": "mailto:farhanazim2015@gmail.com",
-+      "sameAs": [
-+        "https://www.linkedin.com/in/farhanazimaurronoy/"
-+      ],
-+      "alumniOf": {
-+        "@type": "CollegeOrUniversity",
-+        "name": "Dickinson College"
-+      }
-+    }
-+  </script>
-+</head>
-+
-+<body>
-+  <a class="skip-link" href="#top-content">Skip to main content</a>
-+  <div class="nav" role="navigation" aria-label="Primary">
-     <div class="nav-inner">
-       <div class="brand">
-         <strong>Farhan Azim Aurronoy</strong>
-         <span>Finance • Analytics • Banking • Product Systems • SARVA</span>
-       </div>
-       <div class="links">
-         <a class="pill" href="#work">Highlights</a>
-         <a class="pill" href="#dashboard">Dashboards</a>
-         <a class="pill" href="#experience">Experience</a>
-         <a class="pill" href="#education">Education</a>
-         <a class="pill" href="#awards">Awards</a>
-         <a class="pill" href="#skills">Skills</a>
-         <a class="pill" href="#hobbies">Hobbies</a>
-         <a class="pill" href="#contact">Contact</a>
-       </div>
-     </div>
-   </div>
- 
--  <div class="wrap">
-+  <main class="wrap" id="top-content">
-     <!-- HERO -->
-     <header class="grid" id="top">
-       <div class="card hero-left">
-         <div class="hero-top">
-           <div class="avatar" title="Farhan headshot">
--            <img src="assets/farhan.jpg" alt="Farhan Azim Aurronoy" />
-+            <img src="assets/farhan.jpg" alt="Farhan Azim Aurronoy" loading="eager" decoding="async" />
-           </div>
- 
-           <div style="flex:1; min-width:260px">
-             <div class="kicker"><span class="dot"></span><span>Finance-first analytics • pricing • dashboards • decision support</span></div>
-             <h1>Data that makes decisions easier.</h1>
-             <p class="sub">
-               I work across <b>finance</b>, <b>analytics</b>, <b>banking</b>, and <b>product systems</b>—building dashboards,
-               automating reporting, and translating messy data into clear recommendations. I also own finance and analytics as a Founder/CFO at <b>SARVA</b>.
-             </p>
- 
-             <div class="cta">
-               <a class="btn primary" href="#dashboard">See Dashboard Work</a>
--              <a class="btn mint" href="https://drive.google.com/drive/folders/1nNoeXYlTxyPwyd4V-aWjdqNkV15dQgBt?usp=drive_link" target="_blank" rel="noreferrer">Research & Presentations</a>
--              <a class="btn" href="https://linkedin.com/in/farhanazimaurronoy/" target="_blank" rel="noreferrer">LinkedIn</a>
--              <a class="btn" href="mailto:farhanazim2015@gmail.com">Email</a>
--              <a class="btn" href="#" target="_blank" rel="noreferrer">Resume (PDF)</a>
-+              <a class="btn mint" href="https://drive.google.com/drive/folders/1nNoeXYlTxyPwyd4V-aWjdqNkV15dQgBt?usp=drive_link" target="_blank" rel="noopener noreferrer">Research & Presentations</a>
-+              <a class="btn" href="https://linkedin.com/in/farhanazimaurronoy/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
-+              <a class="btn" href="mailto:farhanazim2015@gmail.com">Email</a>
-+              <a class="btn" href="mailto:farhanazim2015@gmail.com?subject=Resume%20Request%20-%20Farhan%20Azim%20Aurronoy">Request Resume (PDF)</a>
-             </div>
- 
-             <div class="divider"></div>
- 
-             <div class="badge-row">
-               <span class="tag">Power BI</span>
-               <span class="tag">SQL</span>
-               <span class="tag">Excel (Advanced)</span>
-               <span class="tag">Financial modeling</span>
-               <span class="tag">Pricing analytics</span>
-               <span class="tag">KPI design</span>
-               <span class="tag">Credit + risk</span>
-               <span class="tag">Stakeholder reporting</span>
-             </div>
-           </div>
-         </div>
-       </div>
- 
-       <div class="card hero-right">
-         <div class="section-head" style="margin-top:0">
-           <h2>Impact Snapshot</h2>
-           <span class="mono">selected</span>
-         </div>
- 
-         <div class="grid" style="gap:10px">
-@@ -821,51 +877,71 @@
-         <div class="card" style="grid-column:span 12">
-           <div class="badge-row" style="margin-top:0">
-             <span class="tag">Cooking</span>
-             <span class="tag">Singing</span>
-             <span class="tag">Soccer</span>
-             <span class="tag">Hiking</span>
-           </div>
-           <p class="sub" style="margin-top:12px">
-             I like hobbies that keep me grounded and energetic — and they usually make teamwork and consistency feel natural.
-           </p>
-         </div>
-       </div>
-     </section>
- 
-     <!-- CONTACT -->
-     <section id="contact">
-       <div class="section-head">
-         <h2>Contact</h2>
-         <span>quick reach</span>
-       </div>
- 
-       <div class="grid">
-         <div class="card" style="grid-column:span 12">
-           <div class="cta" style="margin-top:0">
-             <a class="btn primary" href="mailto:farhanazim2015@gmail.com">Email</a>
--            <a class="btn" href="https://linkedin.com/in/farhanazimaurronoy/" target="_blank" rel="noreferrer">LinkedIn</a>
--            <a class="btn mint" href="https://drive.google.com/drive/folders/1nNoeXYlTxyPwyd4V-aWjdqNkV15dQgBt?usp=drive_link" target="_blank" rel="noreferrer">Research Folder</a>
--            <a class="btn" href="#top">Back to top</a>
-+            <a class="btn" href="https://linkedin.com/in/farhanazimaurronoy/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
-+            <a class="btn mint" href="https://drive.google.com/drive/folders/1nNoeXYlTxyPwyd4V-aWjdqNkV15dQgBt?usp=drive_link" target="_blank" rel="noopener noreferrer">Research Folder</a>
-+            <button class="btn" type="button" id="copy-email">Copy Email</button>
-+            <a class="btn" href="#top">Back to top</a>
-           </div>
- 
-           <div class="divider"></div>
- 
-           <div class="muted2" style="font-size:12px; line-height:1.7">
-             <span class="mono">Location:</span> Carlisle, PA •
-             <span class="mono">Email:</span> farhanazim2015@gmail.com
-           </div>
-         </div>
-       </div>
-     </section>
- 
--    <div class="footer">
--      <span>© <span id="y"></span> Farhan Azim Aurronoy</span>
--      <span class="mono">Finance • Analytics • Dashboards • Banking • SARVA</span>
--    </div>
--  </div>
--
--  <script>
--    document.getElementById("y").textContent = new Date().getFullYear();
--  </script>
--</body>
--</html>
-+    <div class="footer">
-+      <span>© <span id="y"></span> Farhan Azim Aurronoy</span>
-+      <span class="mono">Finance • Analytics • Dashboards • Banking • SARVA • Updated <time id="updated-date"></time></span>
-+    </div>
-+  </main>
-+
-+  <script>
-+    document.getElementById("y").textContent = new Date().getFullYear();
-+    const updatedDate = document.getElementById("updated-date");
-+    if (updatedDate) {
-+      const now = new Date();
-+      updatedDate.textContent = now.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
-+      updatedDate.setAttribute("datetime", now.toISOString().split("T")[0]);
-+    }
-+    const copyEmailButton = document.getElementById("copy-email");
-+    if (copyEmailButton) {
-+      copyEmailButton.addEventListener("click", async () => {
-+        const email = "farhanazim2015@gmail.com";
-+        try {
-+          await navigator.clipboard.writeText(email);
-+          copyEmailButton.textContent = "Email Copied";
-+          setTimeout(() => (copyEmailButton.textContent = "Copy Email"), 1800);
-+        } catch {
-+          window.location.href = `mailto:${email}`;
-+        }
-+      });
-+    }
-+  </script>
-+</body>
-+</html>
- 
-EOF
-)
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Farhan Azim Aurronoy — Finance · Analytics · AI Product</title>
+<meta name="description" content="Farhan Azim Aurronoy. Quantitative economics, finance, analytics, and AI product. Co-Founder & CFO at Sarva. Speaker, US AI Institute Hackathon 2026." />
+<meta name="theme-color" content="#0a0b0d">
+
+<meta property="og:title" content="Farhan Azim Aurronoy — Finance · Analytics · AI Product" />
+<meta property="og:description" content="Quantitative economics, finance, analytics, and AI product. Co-Founder & CFO at Sarva. Speaker, US AI Institute Hackathon 2026." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://farhanazim-sarva.github.io/Farhan/" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0b0d'/><circle cx='50' cy='50' r='18' fill='%23e8c468'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0b0d; --bg-2:#101216; --panel:#13161b; --panel-2:#181c22;
+  --line:#2a3038; --line-2:#363d48;
+  --ink:#f4f6fa; --ink-2:#c2c8d4; --ink-3:#7a8290;
+  --accent:#e8c468;        /* warm amber — readable at scale */
+  --accent-soft:#f4d98a;   /* lighter amber for body emphasis */
+  --accent-2:#ff8a5c;      /* terracotta */
+  --green:#5dd9a8; --red:#ff7a90; --gold:#e8c468;
+  --serif:'Fraunces', ui-serif, Georgia, serif;
+  --mono:'JetBrains Mono', ui-monospace, monospace;
+  --sans:'Inter', system-ui, -apple-system, sans-serif;
+  --grid: 1280px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit;padding:0}
+::selection{background:var(--accent);color:#000}
+
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.06;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+}
+.col-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(to right, transparent 0, transparent calc(100% - 1px), rgba(255,255,255,.025) calc(100% - 1px));background-size: calc(100%/12) 100%;max-width:var(--grid);left:50%;transform:translateX(-50%)}
+.wrap{max-width:var(--grid);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+
+/* TICKER */
+.ticker{border-bottom:1px solid var(--line);background:var(--bg-2);font-family:var(--mono);font-size:11px;color:var(--ink-2);overflow:hidden;position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.ticker-inner{display:flex;gap:48px;white-space:nowrap;padding:9px 0;animation:scroll 60s linear infinite;will-change:transform}
+.ticker:hover .ticker-inner{animation-play-state:paused}
+.ticker span b{color:var(--accent);font-weight:500;margin-right:8px;letter-spacing:.04em}
+.ticker .up{color:var(--green)} .ticker .down{color:var(--red)}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* NAV */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;letter-spacing:.04em}
+.nav .logo{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--ink);display:flex;align-items:center;gap:8px}
+.nav .logo .dot{color:var(--accent)}
+.nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0}
+.nav ul a{color:var(--ink-2);transition:color .2s;position:relative}
+.nav ul a:hover{color:var(--accent)}
+.nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.nav ul a:hover::after{transform:scaleX(1)}
+.nav .meta{display:flex;gap:14px;align-items:center;color:var(--ink-3)}
+.nav .meta .live{display:inline-flex;align-items:center;gap:6px}
+.nav .meta .live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(93,217,168,.7);animation:pulse 1.6s infinite}
+.kbd{font-family:var(--mono);font-size:10px;color:var(--ink-3);border:1px solid var(--line-2);padding:3px 7px;letter-spacing:.04em;cursor:pointer;transition:all .2s}
+.kbd:hover{border-color:var(--accent);color:var(--accent)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(93,217,168,.7)}70%{box-shadow:0 0 0 8px rgba(93,217,168,0)}100%{box-shadow:0 0 0 0 rgba(93,217,168,0)}}
+@media (max-width:880px){ .nav ul{display:none} .nav .meta .live{display:none} }
+
+/* HERO */
+.hero{padding:60px 0 40px;border-bottom:1px solid var(--line);position:relative}
+.hero .stamp{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-3);margin-bottom:28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(48px, 9vw, 132px);line-height:.96;letter-spacing:-.035em;margin:0 0 20px;color:var(--ink)}
+.hero h1 i{font-style:italic;color:var(--accent-soft);font-weight:400}
+.hero h1 .amp{font-family:var(--serif);font-style:italic;color:var(--ink-3);font-weight:300}
+.hero .lede{max-width:680px;font-size:19px;line-height:1.6;color:var(--ink-2);font-weight:300;margin:14px 0 36px}
+.hero .lede b{color:var(--ink);font-weight:500}
+
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid var(--line-2);background:transparent;color:var(--ink);font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;border-radius:0;cursor:pointer}
+.btn:hover{border-color:var(--accent);color:var(--accent);transform:translate(0,-1px)}
+.btn.primary{background:var(--accent);color:#000;border-color:var(--accent)}
+.btn.primary:hover{background:#fff;border-color:#fff;color:#000;transform:translate(0,-1px)}
+.btn .arrow{font-family:var(--serif);font-size:14px}
+
+.hero-meta{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.hero-meta div{padding:22px 22px 22px 0;border-right:1px solid var(--line)}
+.hero-meta div:last-child{border-right:none}
+.hero-meta .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink-3);text-transform:uppercase;margin-bottom:10px}
+.hero-meta .v{font-family:var(--serif);font-size:32px;font-weight:400;letter-spacing:-.02em;color:var(--ink)}
+.hero-meta .v small{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.05em;margin-left:6px}
+@media (max-width:780px){ .hero-meta{grid-template-columns:repeat(2,1fr)} .hero-meta div:nth-child(2){border-right:none} }
+
+/* SPEAKER ANNOUNCE — featured callout */
+.announce{margin-top:32px;padding:24px 24px;border:1px solid var(--accent);position:relative;overflow:hidden;background:linear-gradient(135deg, rgba(232,196,104,.1), transparent 60%)}
+.announce::before{content:"";position:absolute;top:-40px;right:-40px;width:160px;height:160px;border:1px solid var(--accent);opacity:.3;transform:rotate(45deg)}
+.announce .row{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;position:relative;z-index:1}
+.announce .tag{background:var(--accent);color:#000;padding:6px 10px;font-weight:700;letter-spacing:.08em;font-size:10px;font-family:var(--mono);align-self:start}
+.announce .body{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink)}
+.announce .title{font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:-.01em;color:var(--ink);margin:4px 0 6px;font-style:italic}
+.announce .sub{color:var(--ink-2);font-family:var(--mono);font-size:11px;letter-spacing:.04em}
+.announce .cta{font-family:var(--mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid var(--accent);padding-bottom:2px}
+@media (max-width:780px){ .announce .row{grid-template-columns:1fr} }
+
+/* SECTIONS */
+.section{padding:80px 0;border-bottom:1px solid var(--line);position:relative}
+.sec-hd{display:grid;grid-template-columns:120px 1fr auto;gap:24px;align-items:end;padding-bottom:24px;margin-bottom:40px;border-bottom:1px solid var(--line)}
+.sec-hd .num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--accent);padding-top:4px}
+.sec-hd .title{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4vw,52px);letter-spacing:-.025em;line-height:1}
+.sec-hd .title i{font-style:italic;color:var(--ink-2)}
+.sec-hd .meta{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink-3);text-transform:uppercase}
+@media (max-width:780px){ .sec-hd{grid-template-columns:1fr;gap:8px} .sec-hd .meta{order:-1} }
+
+/* MARKET / DASHBOARD */
+.market{display:grid;grid-template-columns:2fr 1fr;gap:24px}
+@media (max-width:980px){ .market{grid-template-columns:1fr} }
+.panel{background:var(--panel);border:1px solid var(--line);position:relative}
+.panel-hd{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-2);text-transform:uppercase}
+.panel-hd .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;box-shadow:0 0 8px var(--accent)}
+.panel-bd{padding:18px}
+
+.impact{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.impact .cell{padding:28px 22px;border-right:1px solid var(--line)}
+.impact .cell:last-child{border-right:none}
+.impact .num{font-family:var(--serif);font-size:64px;font-weight:300;letter-spacing:-.04em;line-height:1;color:var(--accent)}
+.impact .num small{font-family:var(--mono);color:var(--ink-2);font-size:14px;letter-spacing:.04em;margin-left:4px;display:inline-block}
+.impact .lbl{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;margin-top:14px}
+.impact .desc{font-size:13px;color:var(--ink-2);margin-top:8px;line-height:1.5}
+@media (max-width:780px){ .impact{grid-template-columns:1fr} .impact .cell{border-right:none;border-bottom:1px solid var(--line)} }
+
+.chart-wrap{padding:0 18px 18px}
+.legend{display:flex;gap:18px;padding:14px 18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;flex-wrap:wrap}
+.legend i{display:inline-block;width:16px;height:2px;margin-right:8px;vertical-align:middle}
+
+.stack{display:flex;flex-direction:column}
+.stack-row{display:grid;grid-template-columns:90px 1fr 60px;gap:12px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px}
+.stack-row:last-child{border-bottom:none}
+.stack-row .name{color:var(--ink)}
+.stack-row .bar{height:4px;background:var(--panel-2);position:relative;overflow:hidden}
+.stack-row .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+.stack-row.in .bar i{transform:scaleX(1)}
+.stack-row .pct{text-align:right;color:var(--ink-3);font-size:11px}
+
+/* DASHBOARD PREVIEW BLOCK */
+.dash-preview{margin-top:24px;border:1px solid var(--line);background:var(--panel);overflow:hidden}
+.dash-preview .top{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.dash-preview .top .dots{display:flex;gap:6px}
+.dash-preview .top .dots i{width:10px;height:10px;border-radius:50%;background:var(--line-2);display:inline-block}
+.dash-preview .top .url{flex:1;text-align:center;color:var(--ink-3);letter-spacing:.05em}
+.dash-preview .top .badge{background:var(--accent);color:#000;font-weight:700;padding:2px 6px;font-size:10px;letter-spacing:.06em}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--line)}
+.dash-cell{padding:16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dash-cell:nth-child(3n){border-right:none}
+.dash-cell .lbl{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:8px}
+.dash-cell .val{font-family:var(--serif);font-size:28px;font-weight:400;letter-spacing:-.02em;color:var(--ink)}
+.dash-cell .delta{font-family:var(--mono);font-size:10px;color:var(--green);letter-spacing:.04em;margin-top:4px}
+.dash-cell .delta.dn{color:var(--red)}
+.dash-cell.span2{grid-column:span 2}
+.dash-cell.span3{grid-column:span 3}
+@media (max-width:780px){ .dash-grid{grid-template-columns:1fr 1fr} .dash-cell:nth-child(3n){border-right:1px solid var(--line)} .dash-cell:nth-child(2n){border-right:none} .dash-cell.span2,.dash-cell.span3{grid-column:span 2} }
+
+/* EXPERIENCE */
+.xp{display:flex;flex-direction:column}
+.xp .item{padding:28px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 3fr 2fr;gap:32px;cursor:default;transition:background .25s, padding .25s;position:relative}
+.xp .item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--accent);transition:width .25s}
+.xp .item:hover{background:linear-gradient(90deg, rgba(232,196,104,.04), transparent 60%);padding-left:18px}
+.xp .item:hover::before{width:2px}
+.xp .item:last-child{border-bottom:1px solid var(--line)}
+.xp .when{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink-3)}
+.xp .who h3{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.02em;margin:0 0 4px;color:var(--ink)}
+.xp .who .role{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+.xp .what{font-size:14px;color:var(--ink-2);line-height:1.6}
+.xp .what .h{color:var(--ink);font-weight:500}
+.xp .tags{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap}
+.xp .tags span{font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:var(--ink-3);border:1px solid var(--line-2);padding:3px 8px}
+@media (max-width:980px){ .xp .item{grid-template-columns:1fr;gap:12px} }
+
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+@media (max-width:780px){ .proj-grid{grid-template-columns:1fr} }
+.proj{border:1px solid var(--line);background:var(--panel);padding:28px 26px;position:relative;overflow:hidden;transition:all .25s}
+.proj:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 24px 48px -16px rgba(232,196,104,.15)}
+.proj .stamp{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink-3);margin-bottom:18px;display:flex;justify-content:space-between}
+.proj .stamp .stat{color:var(--accent)}
+.proj h3{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.1;letter-spacing:-.02em;margin:0 0 12px}
+.proj h3 i{font-style:italic;color:var(--ink-2)}
+.proj p{color:var(--ink-2);font-size:14px;line-height:1.6;margin:0 0 18px}
+.proj .stack-tags{display:flex;gap:6px;flex-wrap:wrap}
+.proj .stack-tags span{font-family:var(--mono);font-size:10px;color:var(--ink-3);border-bottom:1px solid var(--line-2);padding:2px 0}
+.proj .metric{position:absolute;top:18px;right:18px;font-family:var(--mono);font-size:11px;color:var(--green)}
+.proj-mini-chart{margin:18px 0 16px;height:72px;width:100%}
+
+/* PRESS / SPEAKING */
+.press-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+@media (max-width:880px){ .press-grid{grid-template-columns:1fr} }
+.press-feat{border:1px solid var(--accent);background:linear-gradient(180deg, rgba(232,196,104,.06), transparent);padding:36px 32px;position:relative;overflow:hidden}
+.press-feat::before{content:"01";position:absolute;top:18px;right:24px;font-family:var(--serif);font-size:120px;color:rgba(232,196,104,.07);font-weight:300;line-height:1}
+.press-feat .pre{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:18px}
+.press-feat h3{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.5vw,44px);line-height:1.1;letter-spacing:-.025em;margin:0 0 16px}
+.press-feat h3 i{font-style:italic;color:var(--accent-soft)}
+.press-feat .track{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-2);text-transform:uppercase;margin-bottom:12px;padding-bottom:12px;border-bottom:1px dashed var(--line-2)}
+.press-feat .role{font-family:var(--mono);font-size:13px;color:var(--ink-2);margin-bottom:18px}
+.press-feat .role b{color:var(--ink)}
+.press-feat .desc{font-size:14px;color:var(--ink-2);line-height:1.7;margin-bottom:24px;max-width:560px}
+.press-feat .actions{display:flex;gap:12px;flex-wrap:wrap}
+
+.speaking-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--line)}
+.speaking-list .row{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px;transition:background .2s}
+.speaking-list .row:last-child{border-bottom:none}
+.speaking-list .row:hover{background:var(--panel)}
+.speaking-list .row .when{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink-3);text-transform:uppercase}
+.speaking-list .row .what{font-family:var(--serif);font-size:18px;font-weight:400;letter-spacing:-.01em;color:var(--ink)}
+.speaking-list .row .where{font-family:var(--mono);font-size:11px;color:var(--ink-2);letter-spacing:.04em}
+.speaking-list .row.upcoming .when{color:var(--accent)}
+
+/* EDUCATION */
+.edu{display:grid;grid-template-columns:1.4fr 1fr;gap:0;border:1px solid var(--line)}
+@media (max-width:780px){ .edu{grid-template-columns:1fr} }
+.edu .left{padding:36px 32px;border-right:1px solid var(--line)}
+.edu .right{padding:36px 32px;background:var(--panel)}
+@media (max-width:780px){ .edu .left{border-right:none;border-bottom:1px solid var(--line)} }
+.edu h3{font-family:var(--serif);font-weight:400;font-size:34px;letter-spacing:-.02em;margin:0 0 6px}
+.edu .deg{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
+.edu p{color:var(--ink-2);font-size:14px;line-height:1.6;margin:18px 0 0}
+.edu .honors{margin-top:24px;display:flex;flex-direction:column;gap:8px}
+.edu .honors div{font-family:var(--mono);font-size:12px;color:var(--ink-2);display:flex;gap:10px;align-items:center}
+.edu .honors div::before{content:"●";color:var(--accent);font-size:8px}
+.edu .right h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink-3);text-transform:uppercase;margin:0 0 18px}
+.edu .courses{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+.edu .courses div{padding:6px 0;border-bottom:1px dashed var(--line)}
+@media (max-width:540px){ .edu .courses{grid-template-columns:1fr} }
+
+/* AWARDS */
+.awards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line)}
+@media (max-width:980px){ .awards-grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:540px){ .awards-grid{grid-template-columns:1fr} }
+.award{padding:28px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;min-height:170px;transition:background .2s}
+.award:hover{background:var(--panel)}
+.award .badge{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:14px}
+.award h4{font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.2;letter-spacing:-.02em;margin:0 0 8px}
+.award p{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin:0;letter-spacing:.04em;line-height:1.5}
+.award.featured{background:linear-gradient(180deg, rgba(232,196,104,.08), transparent)}
+.award.featured .badge{color:var(--accent-2)}
+
+/* CONTACT */
+.contact{padding:100px 0 40px}
+.contact .big{font-family:var(--serif);font-weight:300;font-size:clamp(40px,7vw,96px);line-height:.98;letter-spacing:-.035em;margin:0 0 28px;max-width:1000px}
+.contact .big i{font-style:italic;color:var(--accent-soft)}
+.contact .meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:60px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+.contact .meta-grid .k{font-size:10px;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:8px}
+.contact .meta-grid a{color:var(--ink);transition:color .2s}
+.contact .meta-grid a:hover{color:var(--accent)}
+@media (max-width:780px){ .contact .meta-grid{grid-template-columns:repeat(2,1fr)} }
+
+footer{padding:32px 0;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink-3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* SIDE MARK */
+.side-mark{position:fixed;left:14px;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:left center;font-family:var(--mono);font-size:10px;letter-spacing:.4em;color:var(--ink-3);z-index:10}
+@media (max-width:1080px){ .side-mark{display:none} }
+
+/* COMMAND PALETTE */
+.cmdk-overlay{position:fixed;inset:0;background:rgba(10,11,13,.85);backdrop-filter:blur(6px);z-index:200;display:none;align-items:flex-start;justify-content:center;padding-top:14vh}
+.cmdk-overlay.open{display:flex;animation:fadeIn .15s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.cmdk{width:min(560px,92vw);background:var(--panel);border:1px solid var(--line-2);box-shadow:0 24px 60px rgba(0,0,0,.6)}
+.cmdk input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--line);padding:18px 20px;color:var(--ink);font-family:var(--mono);font-size:14px;letter-spacing:.02em;outline:none}
+.cmdk input::placeholder{color:var(--ink-3)}
+.cmdk ul{list-style:none;margin:0;padding:8px 0;max-height:50vh;overflow-y:auto}
+.cmdk li{padding:12px 20px;cursor:pointer;font-family:var(--mono);font-size:13px;color:var(--ink-2);display:flex;justify-content:space-between;align-items:center;gap:12px;transition:all .12s}
+.cmdk li:hover, .cmdk li.active{background:var(--panel-2);color:var(--ink);border-left:2px solid var(--accent);padding-left:18px}
+.cmdk li .hint{font-size:10px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase}
+.cmdk .footer{padding:10px 20px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;color:var(--ink-3);letter-spacing:.06em;display:flex;justify-content:space-between}
+
+.muted{color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<div class="col-grid"></div>
+<div class="side-mark">FAA · TERMINAL · 2026</div>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span><b>SARVA</b> CO-FOUNDER · CFO <span class="up">▲ ACTIVE</span></span>
+    <span><b>USAII'26</b> SPEAKER · GLOBAL PERSPECTIVES TRACK <span class="up">▲ NEW</span></span>
+    <span><b>PB-UCC</b> SAVINGS IDENTIFIED <span class="up">+$200K</span></span>
+    <span><b>FRAUD-AI</b> ROC-AUC <span class="up">0.94</span></span>
+    <span><b>BGD-INEQ</b> GINI Δ <span class="down">−2.3%</span> per 10% MFS</span>
+    <span><b>LOAN-EXT</b> SME ORIG. <span class="up">+$60K</span></span>
+    <span><b>FRAUD-AI</b> FALSE-NEG <span class="up">−30%</span></span>
+    <span><b>RPT-AUTOMATION</b> MANUAL HRS <span class="down">−30%</span></span>
+    <span><b>ASCENDER-PGH</b> COHORT 2026 <span class="up">▲</span></span>
+    <!-- duplicate -->
+    <span><b>SARVA</b> CO-FOUNDER · CFO <span class="up">▲ ACTIVE</span></span>
+    <span><b>USAII'26</b> SPEAKER · GLOBAL PERSPECTIVES TRACK <span class="up">▲ NEW</span></span>
+    <span><b>PB-UCC</b> SAVINGS IDENTIFIED <span class="up">+$200K</span></span>
+    <span><b>FRAUD-AI</b> ROC-AUC <span class="up">0.94</span></span>
+    <span><b>BGD-INEQ</b> GINI Δ <span class="down">−2.3%</span> per 10% MFS</span>
+    <span><b>LOAN-EXT</b> SME ORIG. <span class="up">+$60K</span></span>
+    <span><b>FRAUD-AI</b> FALSE-NEG <span class="up">−30%</span></span>
+    <span><b>RPT-AUTOMATION</b> MANUAL HRS <span class="down">−30%</span></span>
+    <span><b>ASCENDER-PGH</b> COHORT 2026 <span class="up">▲</span></span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="logo">Farhan Azim<span class="dot">.</span></div>
+    <ul>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#press">Press</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="meta">
+      <span class="live">LIVE · CARLISLE PA</span>
+      <span class="kbd" id="cmd-trigger">⌘ K</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="stamp">
+      <span>VOL. 26 · ISSUE 01 · MAY 2026</span>
+      <span>DICKINSON COLLEGE · ECONOMETRICS &amp; QUANTITATIVE ECONOMICS</span>
+      <span>FAA-2026-TERMINAL</span>
+    </div>
+
+    <h1>
+      Finance, modeled.<br/>
+      Data, <i>made decisive.</i><br/>
+      Products, <span class="amp">&amp;</span> shipped.
+    </h1>
+
+    <p class="lede">
+      I'm <b>Farhan Azim Aurronoy</b> — quantitative economist, founder, and analyst. I build
+      <b>financial models</b>, <b>analytics pipelines</b>, and <b>AI-powered products</b> that
+      turn ambiguous data into decisions executives can act on. Currently <b>Co-Founder &amp; CFO at Sarva</b>,
+      a multilingual AI SaaS for underserved businesses, and a 2026 speaker at the
+      <b>US AI Institute Hackathon</b>.
+    </p>
+
+    <div class="hero-cta">
+      <a class="btn primary" href="#projects">View case files <span class="arrow">→</span></a>
+      <a class="btn" href="assets/farhan-azim-resume.pdf" target="_blank" rel="noopener">Resume (PDF) ↗</a>
+      <a class="btn" href="https://linkedin.com/in/farhanazimaurronoy/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:farhanazim2015@gmail.com">Email</a>
+    </div>
+
+    <div class="hero-meta">
+      <div><div class="k">Savings Identified</div><div class="v">$200K<small>+/yr</small></div></div>
+      <div><div class="k">Records Analyzed</div><div class="v">250K<small>txns</small></div></div>
+      <div><div class="k">Vendors / Users</div><div class="v">50<small>/ 1.5K</small></div></div>
+      <div><div class="k">Reporting Time</div><div class="v">−30%<small>manual</small></div></div>
+    </div>
+
+    <!-- Featured speaker callout with REAL talk title -->
+    <div class="announce">
+      <div class="row">
+        <div class="tag">SPEAKING</div>
+        <div class="body">
+          <div class="sub">US AI Institute · AI Hackathon 2026 · Global Perspectives &amp; Foundations Track</div>
+          <div class="title">"AI Made Simple: Foundations for the Next Generation"</div>
+          <div class="sub"><b style="color:var(--ink)">Farhan Azim Aurronoy</b> — Founder &amp; CFO, Sarva</div>
+        </div>
+        <a class="cta" href="https://aihackathon.usaii.org/" target="_blank" rel="noopener">Event details →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- IMPACT -->
+  <section class="section" id="impact">
+    <div class="sec-hd">
+      <div class="num">/ 01</div>
+      <div class="title"><i>Impact,</i> at a glance.</div>
+      <div class="meta">SELECTED · OUTCOMES</div>
+    </div>
+
+    <div class="market">
+      <div class="panel">
+        <div class="panel-hd">
+          <div><span class="dot"></span>FAA / IMPACT-INDEX · TRAILING 24M</div>
+          <div>USD · NORMALIZED</div>
+        </div>
+        <div class="chart-wrap">
+          <svg viewBox="0 0 800 280" width="100%" height="280" preserveAspectRatio="none" aria-label="Career impact trajectory">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#e8c468" stop-opacity=".35"/>
+                <stop offset="100%" stop-color="#e8c468" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <g stroke="#2a3038" stroke-width="1">
+              <line x1="0" y1="40" x2="800" y2="40"/>
+              <line x1="0" y1="100" x2="800" y2="100"/>
+              <line x1="0" y1="160" x2="800" y2="160"/>
+              <line x1="0" y1="220" x2="800" y2="220"/>
+            </g>
+            <path d="M 0 220 L 60 200 L 120 195 L 180 170 L 240 155 L 300 130 L 360 115 L 420 100 L 480 85 L 540 70 L 600 55 L 660 50 L 720 35 L 800 28 L 800 280 L 0 280 Z" fill="url(#g1)"/>
+            <path d="M 0 220 L 60 200 L 120 195 L 180 170 L 240 155 L 300 130 L 360 115 L 420 100 L 480 85 L 540 70 L 600 55 L 660 50 L 720 35 L 800 28" fill="none" stroke="#e8c468" stroke-width="2"/>
+            <path d="M 0 240 L 60 235 L 120 220 L 180 215 L 240 200 L 300 195 L 360 175 L 420 160 L 480 145 L 540 140 L 600 120 L 660 110 L 720 95 L 800 80" fill="none" stroke="#5dd9a8" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <g font-family="JetBrains Mono" font-size="9" fill="#7a8290" letter-spacing=".05em">
+              <text x="6" y="12">IMPACT-INDEX (REL.)</text>
+              <text x="60" y="270">'24 Q1</text>
+              <text x="240" y="270">'24 Q3</text>
+              <text x="420" y="270">'25 Q2</text>
+              <text x="600" y="270">'25 Q4</text>
+              <text x="730" y="270">'26 Q1</text>
+            </g>
+            <g>
+              <circle cx="180" cy="170" r="4" fill="#0a0b0d" stroke="#e8c468" stroke-width="2"/>
+              <circle cx="300" cy="130" r="4" fill="#0a0b0d" stroke="#e8c468" stroke-width="2"/>
+              <circle cx="420" cy="100" r="4" fill="#0a0b0d" stroke="#e8c468" stroke-width="2"/>
+              <circle cx="660" cy="50" r="4" fill="#0a0b0d" stroke="#e8c468" stroke-width="2"/>
+              <circle cx="720" cy="35" r="6" fill="#e8c468"/>
+            </g>
+            <g font-family="JetBrains Mono" font-size="9" fill="#c2c8d4">
+              <text x="190" y="166">Colton Alexander · IB</text>
+              <text x="310" y="126">Sarva · founded</text>
+              <text x="430" y="96">PB-UCC · $200K</text>
+              <text x="560" y="46">USAII Speaker '26</text>
+            </g>
+          </svg>
+        </div>
+        <div class="legend">
+          <div><i style="background:#e8c468"></i>Impact-Index (cumulative)</div>
+          <div><i style="background:#5dd9a8;border-bottom:1px dashed #5dd9a8"></i>Skill-stack growth</div>
+        </div>
+        <div class="impact">
+          <div class="cell">
+            <div class="num">$200K<small>+/yr</small></div>
+            <div class="lbl">Savings · PB-UCC</div>
+            <div class="desc">Modeled institutional pricing in Power BI &amp; comps-style analysis to surface annual cost reductions.</div>
+          </div>
+          <div class="cell">
+            <div class="num">94<small>% AUC</small></div>
+            <div class="lbl">Fraud Model · 250K txns</div>
+            <div class="desc">Logistic Regression · Random Forest · XGBoost. Reduced false-negatives ~30% via feature engineering.</div>
+          </div>
+          <div class="cell">
+            <div class="num">−2.3<small>% Gini</small></div>
+            <div class="lbl">Bangladesh · 2011-23</div>
+            <div class="desc">Log-log panel regression in R: 10% mobile-finance penetration → ~2.3% inequality reduction.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-hd">
+          <div><span class="dot"></span>STACK · WEIGHTED ALLOCATION</div>
+          <div>%</div>
+        </div>
+        <div class="stack">
+          <div class="stack-row"><span class="name">Excel · Modeling</span><span class="bar"><i style="width:96%"></i></span><span class="pct">96</span></div>
+          <div class="stack-row"><span class="name">SQL</span><span class="bar"><i style="width:92%"></i></span><span class="pct">92</span></div>
+          <div class="stack-row"><span class="name">Power BI</span><span class="bar"><i style="width:90%"></i></span><span class="pct">90</span></div>
+          <div class="stack-row"><span class="name">Python</span><span class="bar"><i style="width:84%"></i></span><span class="pct">84</span></div>
+          <div class="stack-row"><span class="name">R · Stata</span><span class="bar"><i style="width:78%"></i></span><span class="pct">78</span></div>
+          <div class="stack-row"><span class="name">DCF · LBO · Comps</span><span class="bar"><i style="width:88%"></i></span><span class="pct">88</span></div>
+          <div class="stack-row"><span class="name">AI / LLM Tooling</span><span class="bar"><i style="width:86%"></i></span><span class="pct">86</span></div>
+          <div class="stack-row"><span class="name">Next.js · TypeScript</span><span class="bar"><i style="width:72%"></i></span><span class="pct">72</span></div>
+          <div class="stack-row"><span class="name">HubSpot · NetSuite</span><span class="bar"><i style="width:70%"></i></span><span class="pct">70</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard preview -->
+    <div class="dash-preview" style="margin-top:32px">
+      <div class="top">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="url">faa-terminal://rates-analysis · pb-ucc · power-bi</div>
+        <div class="badge">PREVIEW</div>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-cell">
+          <div class="lbl">Projected Annual Savings</div>
+          <div class="val">$200K<small style="font-size:12px;color:var(--ink-3);font-family:var(--mono);margin-left:4px">+</small></div>
+          <div class="delta">▲ rate-method analysis</div>
+        </div>
+        <div class="dash-cell">
+          <div class="lbl">Coverage Rows</div>
+          <div class="val">~1,800</div>
+          <div class="delta">active · end-date null/future</div>
+        </div>
+        <div class="dash-cell">
+          <div class="lbl">Manual Reporting</div>
+          <div class="val">−30%</div>
+          <div class="delta dn">▼ post-automation</div>
+        </div>
+        <div class="dash-cell span2">
+          <div class="lbl">Rate Variance by Tier (N1–N4)</div>
+          <svg viewBox="0 0 400 90" width="100%" height="90" preserveAspectRatio="none" style="margin-top:12px">
+            <g fill="#5dd9a8" opacity=".7">
+              <rect x="20"  y="40" width="48" height="46"/>
+              <rect x="120" y="20" width="48" height="66"/>
+              <rect x="220" y="32" width="48" height="54"/>
+              <rect x="320" y="48" width="48" height="38"/>
+            </g>
+            <g fill="#e8c468">
+              <rect x="74"  y="32" width="40" height="54"/>
+              <rect x="174" y="14" width="40" height="72"/>
+              <rect x="274" y="24" width="40" height="62"/>
+              <rect x="374" y="42" width="22" height="44"/>
+            </g>
+            <g font-family="JetBrains Mono" font-size="9" fill="#7a8290">
+              <text x="36" y="84">N1</text>
+              <text x="136" y="84">N2</text>
+              <text x="236" y="84">N3</text>
+              <text x="336" y="84">N4</text>
+            </g>
+          </svg>
+        </div>
+        <div class="dash-cell">
+          <div class="lbl">Dispersion Hotspots</div>
+          <svg viewBox="0 0 200 90" width="100%" height="90" preserveAspectRatio="none" style="margin-top:12px">
+            <circle cx="30" cy="60" r="3" fill="#c2c8d4"/>
+            <circle cx="55" cy="50" r="4" fill="#c2c8d4"/>
+            <circle cx="80" cy="55" r="3" fill="#c2c8d4"/>
+            <circle cx="105" cy="40" r="6" fill="#e8c468"/>
+            <circle cx="130" cy="35" r="8" fill="#e8c468"/>
+            <circle cx="155" cy="20" r="10" fill="#ff8a5c"/>
+            <circle cx="175" cy="30" r="7" fill="#ff8a5c"/>
+            <text x="6" y="85" font-family="JetBrains Mono" font-size="8" fill="#7a8290">LOW VAR ←   → HIGH VAR</text>
+          </svg>
+        </div>
+        <div class="dash-cell span3" style="border-bottom:none">
+          <div class="lbl">Methodology</div>
+          <div style="font-family:var(--mono);font-size:12px;color:var(--ink-2);line-height:1.7;margin-top:8px">
+            Comparing <b style="color:var(--ink)">current vs. future-state medical rates</b> across tiers (N1–N4) using two methods: <b style="color:var(--accent)">conference-code</b> vs. <b style="color:var(--accent)">ZIP-prefix</b>. Variance &amp; dispersion surfaced for executive review. <a href="dashboards/rates-analysis.html" style="color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:1px">Open full dashboard →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="sec-hd">
+      <div class="num">/ 02</div>
+      <div class="title">Tape, <i>read in order.</i></div>
+      <div class="meta">FOUR YEARS · SIX DESKS</div>
+    </div>
+
+    <div class="xp">
+      <div class="item">
+        <div class="when">JAN 2025 — PRESENT</div>
+        <div class="who"><h3>Sarva</h3><div class="role">Co-Founder · CFO</div></div>
+        <div class="what">
+          <span class="h">Multilingual AI SaaS for underserved businesses.</span> Built and executed product
+          and go-to-market strategy across 50+ vendors and 1,500+ users. Owned 5-yr forecasting,
+          unit economics (CAC, LTV, payback), burn/runway, and scenario analysis. Translated manual
+          store processes into scalable digital systems.
+          <div class="tags"><span>Forecasting</span><span>Unit Economics</span><span>GTM</span><span>Ops</span><span>AI Product</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="when">JUN 2025 — AUG 2025</div>
+        <div class="who"><h3>The Pension Boards — UCC</h3><div class="role">Fintech Business Analyst Intern</div></div>
+        <div class="what">
+          Surfaced <span class="h">$200K+ in projected annual savings</span> by modeling institutional
+          pricing structures in Excel &amp; Power BI; benchmarked via comps-style analysis. Built automated
+          SQL pipelines and executive KPI dashboards across Finance, IT &amp; Ops — cutting manual
+          reporting <span class="h">~30%</span>.
+          <div class="tags"><span>Power BI</span><span>SQL</span><span>Pricing</span><span>KPI Design</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="when">JUN 2024 — DEC 2024</div>
+        <div class="who"><h3>Qi Meta</h3><div class="role">IT Business Analyst Intern</div></div>
+        <div class="what">
+          Automated customer acquisition workflows in HubSpot, lifting lead tracking &amp; conversion
+          efficiency <span class="h">~25%</span>. Ran market segmentation across two regions and
+          streamlined campaign reporting.
+          <div class="tags"><span>HubSpot</span><span>Segmentation</span><span>Automation</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="when">APR 2024 — MAY 2024</div>
+        <div class="who"><h3>Colton Alexander</h3><div class="role">Investment Banking Intern</div></div>
+        <div class="what">
+          Produced investor-ready <span class="h">pitch books and CIMs</span> across 5+ engagements with
+          DCF and comparable-company analyses. Buy-side screening on 10+ early-stage targets — assessed
+          revenue quality, margin trajectory, and TAM to prioritize deal flow.
+          <div class="tags"><span>DCF</span><span>Comps</span><span>CIM</span><span>Buy-side</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="when">JUN 2023 — AUG 2023</div>
+        <div class="who"><h3>ONE Bank Limited</h3><div class="role">Corporate Banking Intern</div></div>
+        <div class="what">
+          Underwrote SME loans — stress-tested cash flows, collateral coverage, and DSCR — facilitating
+          <span class="h">$60K+ in extensions</span> across four clients. Evaluated capital structures
+          and portfolios for five HNW clients with risk-return frameworks.
+          <div class="tags"><span>Credit</span><span>Underwriting</span><span>Risk</span><span>SME</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="sec-hd">
+      <div class="num">/ 03</div>
+      <div class="title"><i>Case files,</i> shipped.</div>
+      <div class="meta">RESEARCH · BUILD · MODEL</div>
+    </div>
+
+    <div class="proj-grid">
+
+      <div class="proj">
+        <div class="metric">▲ AI · LIVE</div>
+        <div class="stamp"><span>FILE 01 · FIN-LINGO</span><span class="stat">SHIPPED · 1 WEEKEND</span></div>
+        <h3>Fin-Lingo<i> — IB learning platform with an AI tutor.</i></h3>
+        <p>End-to-end web app covering M&amp;A, valuation, and financial modeling, with an integrated
+        AI tutor for guided practice. Built and shipped solo in a weekend.</p>
+        <svg class="proj-mini-chart" viewBox="0 0 400 72" preserveAspectRatio="none">
+          <defs><linearGradient id="p1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8c468" stop-opacity=".4"/><stop offset="100%" stop-color="#e8c468" stop-opacity="0"/></linearGradient></defs>
+          <path d="M0 60 L40 55 L80 50 L120 45 L160 40 L200 30 L240 35 L280 22 L320 18 L360 12 L400 8 L400 72 L0 72 Z" fill="url(#p1)"/>
+          <path d="M0 60 L40 55 L80 50 L120 45 L160 40 L200 30 L240 35 L280 22 L320 18 L360 12 L400 8" fill="none" stroke="#e8c468" stroke-width="1.5"/>
+        </svg>
+        <div class="stack-tags"><span>Next.js 14</span><span>TypeScript</span><span>Tailwind</span><span>Groq</span><span>Llama 3.1</span><span>Vercel</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="metric">▲ ROC-AUC 0.94</div>
+        <div class="stamp"><span>FILE 02 · FRAUD-AI</span><span class="stat">250K TXNS</span></div>
+        <h3>Fraud Detection<i> — credit-card default classification.</i></h3>
+        <p>Logistic Regression, Random Forest, XGBoost on 250K+ transactions. Optimized
+        precision-recall trade-offs to ~94% ROC-AUC and reduced false-negatives by ~30% via
+        feature engineering &amp; class-imbalance correction.</p>
+        <svg class="proj-mini-chart" viewBox="0 0 400 72" preserveAspectRatio="none">
+          <g stroke="#2a3038"><line x1="0" y1="36" x2="400" y2="36"/></g>
+          <path d="M0 65 L40 60 L80 55 L120 40 L160 35 L200 25 L240 22 L280 18 L320 15 L360 13 L400 12" fill="none" stroke="#5dd9a8" stroke-width="1.5"/>
+          <path d="M0 50 L40 48 L80 42 L120 38 L160 33 L200 30 L240 28 L280 26 L320 24 L360 23 L400 22" fill="none" stroke="#e8c468" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="6" y="11" font-family="JetBrains Mono" font-size="9" fill="#7a8290">PRECISION (—) · RECALL (- -)</text>
+        </svg>
+        <div class="stack-tags"><span>Python</span><span>scikit-learn</span><span>XGBoost</span><span>SMOTE</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="metric">▼ GINI −2.3%</div>
+        <div class="stamp"><span>FILE 03 · BGD-INEQ</span><span class="stat">12 YR PANEL</span></div>
+        <h3>Mobile Finance<i> &amp; Income Inequality in Bangladesh.</i></h3>
+        <p>Log-log panel regressions (2011–2023) in R. Found that a 10% rise in mobile-finance penetration
+        reduced the Gini coefficient by ~2–2.5%. Lagged terms materially improved long-run fit.</p>
+        <svg class="proj-mini-chart" viewBox="0 0 400 72" preserveAspectRatio="none">
+          <g stroke="#2a3038"><line x1="0" y1="36" x2="400" y2="36"/></g>
+          <path d="M0 18 L40 22 L80 26 L120 28 L160 32 L200 36 L240 40 L280 45 L320 50 L360 55 L400 58" fill="none" stroke="#ff8a5c" stroke-width="1.5"/>
+          <path d="M0 60 L40 55 L80 48 L120 42 L160 36 L200 30 L240 24 L280 18 L320 14 L360 10 L400 8" fill="none" stroke="#e8c468" stroke-width="1.5"/>
+          <text x="6" y="11" font-family="JetBrains Mono" font-size="9" fill="#7a8290">MFS (▲) · GINI (▼)</text>
+        </svg>
+        <div class="stack-tags"><span>R</span><span>Panel Data</span><span>Econometrics</span><span>Stata</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="metric">▲ FOUNDER</div>
+        <div class="stamp"><span>FILE 04 · SARVA</span><span class="stat">EARLY-STAGE</span></div>
+        <h3>Sarva<i> — multilingual AI for underserved businesses.</i></h3>
+        <p>B2B SaaS modernizing local supply chains with multilingual AI. Built financial
+        infrastructure: 5-yr revenue model, CAC/LTV/payback, burn/runway, vendor onboarding,
+        and operational dashboards.</p>
+        <svg class="proj-mini-chart" viewBox="0 0 400 72" preserveAspectRatio="none">
+          <g fill="#e8c468">
+            <rect x="0"   y="60" width="22" height="12"/>
+            <rect x="32"  y="56" width="22" height="16"/>
+            <rect x="64"  y="50" width="22" height="22"/>
+            <rect x="96"  y="44" width="22" height="28"/>
+            <rect x="128" y="40" width="22" height="32"/>
+            <rect x="160" y="34" width="22" height="38"/>
+            <rect x="192" y="28" width="22" height="44"/>
+            <rect x="224" y="22" width="22" height="50"/>
+            <rect x="256" y="18" width="22" height="54"/>
+            <rect x="288" y="14" width="22" height="58"/>
+            <rect x="320" y="10" width="22" height="62"/>
+            <rect x="352" y="6"  width="22" height="66"/>
+          </g>
+          <text x="6" y="9" font-family="JetBrains Mono" font-size="9" fill="#7a8290">VENDOR · USER GROWTH</text>
+        </svg>
+        <div class="stack-tags"><span>Forecasting</span><span>Unit Economics</span><span>Dashboards</span><span>AI Tooling</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS / SPEAKING -->
+  <section class="section" id="press">
+    <div class="sec-hd">
+      <div class="num">/ 04</div>
+      <div class="title">Press <i>&amp; the stage.</i></div>
+      <div class="meta">SPEAKING · COHORTS · MEDIA</div>
+    </div>
+
+    <div class="press-grid">
+      <div class="press-feat">
+        <div class="pre">▲ FEATURED · UPCOMING 2026</div>
+        <div class="track">Track: Global Perspectives &amp; Foundations</div>
+        <h3>"AI Made Simple: <i>Foundations for the Next Generation."</i></h3>
+        <div class="role"><b>Farhan Azim Aurronoy</b> — Founder &amp; CFO, Sarva</div>
+        <p class="desc">Selected speaker at the <b style="color:var(--ink)">US AI Institute · AI Hackathon 2026</b>. A foundational session on
+        applied AI: what the next generation needs to actually <i>use</i> AI well — beyond the hype, beyond
+        the jargon. Drawing on lessons from building a multilingual AI product for underserved markets.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://aihackathon.usaii.org/" target="_blank" rel="noopener">Event page <span class="arrow">↗</span></a>
+          <a class="btn" href="mailto:farhanazim2015@gmail.com?subject=Speaking%20Inquiry">Book a talk</a>
+        </div>
+      </div>
+
+      <div class="speaking-list">
+        <div class="row upcoming">
+          <div class="when">UPCOMING · 2026</div>
+          <div class="what">AI Made Simple: Foundations for the Next Generation</div>
+          <div class="where">US AI Institute · Hackathon 2026 · Speaker</div>
+        </div>
+        <div class="row">
+          <div class="when">2026</div>
+          <div class="what">AscenderPGH Startup Accelerator</div>
+          <div class="where">Bootcamp cohort member · Pittsburgh</div>
+        </div>
+        <div class="row">
+          <div class="when">2025</div>
+          <div class="what">BNY UpPrize Social Innovation</div>
+          <div class="where">Semi-finalist · social-impact challenge</div>
+        </div>
+        <div class="row">
+          <div class="when">2025</div>
+          <div class="what">Pittsburgh Tech Week</div>
+          <div class="where">Semi-finalist · regional tech</div>
+        </div>
+        <div class="row">
+          <div class="when">2024</div>
+          <div class="what">Ship Tank · SADCO</div>
+          <div class="where">Finalist · pitch competition</div>
+        </div>
+        <div class="row">
+          <div class="when">2024</div>
+          <div class="what">Launch U Shark Tank</div>
+          <div class="where">Finalist · Harrisburg University</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section" id="education">
+    <div class="sec-hd">
+      <div class="num">/ 05</div>
+      <div class="title">Foundations.</div>
+      <div class="meta">DICKINSON COLLEGE · CARLISLE, PA</div>
+    </div>
+
+    <div class="edu">
+      <div class="left">
+        <div class="deg">B.A. · Econometrics &amp; Quantitative Economics</div>
+        <h3>Dickinson College</h3>
+        <p class="muted" style="font-family:var(--mono);font-size:12px;letter-spacing:.05em;margin-top:6px">EXPECTED · MAY 2026</p>
+        <p>Quant-heavy program in econometrics and applied finance, paired with a self-directed
+        track in AI &amp; product. Active across founding, research, and student leadership.</p>
+        <div class="honors">
+          <div>1783 Scholar</div>
+          <div>Music Scholar Award</div>
+          <div>AscenderPGH Startup Accelerator (2026)</div>
+          <div>Founder &amp; President — Dickinson Badminton Club (50+ members)</div>
+          <div>Resident Advisor — Residential Life (2 yrs)</div>
+        </div>
+      </div>
+      <div class="right">
+        <h4>Selected Coursework</h4>
+        <div class="courses">
+          <div>Econometrics</div>
+          <div>Investments</div>
+          <div>Empirical Finance</div>
+          <div>Financial Accounting</div>
+          <div>Cost Accounting</div>
+          <div>Managerial Economics</div>
+          <div>AI in Finance</div>
+          <div>Product Development</div>
+          <div>Research in Dev. Econ.</div>
+          <div>Entrepreneurship</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section class="section" id="awards">
+    <div class="sec-hd">
+      <div class="num">/ 06</div>
+      <div class="title"><i>Recognition.</i></div>
+      <div class="meta">SCHOLARSHIPS · COMPETITIONS</div>
+    </div>
+
+    <div class="awards-grid">
+      <div class="award featured">
+        <div class="badge">▲ Speaker · 2026</div>
+        <h4>US AI Institute Hackathon</h4>
+        <p>"AI Made Simple: Foundations for the Next Generation"</p>
+      </div>
+      <div class="award">
+        <div class="badge">Cohort · 2026</div>
+        <h4>AscenderPGH Accelerator</h4>
+        <p>Startup accelerator bootcamp · Pittsburgh.</p>
+      </div>
+      <div class="award">
+        <div class="badge">Semi-Finalist</div>
+        <h4>BNY UpPrize Social Innovation</h4>
+        <p>Social-impact finance &amp; product challenge.</p>
+      </div>
+      <div class="award">
+        <div class="badge">Semi-Finalist</div>
+        <h4>Pittsburgh Tech Week</h4>
+        <p>Regional founder &amp; tech recognition.</p>
+      </div>
+      <div class="award">
+        <div class="badge">Finalist</div>
+        <h4>Ship Tank · SADCO</h4>
+        <p>Shippensburg Area Development Corporation pitch.</p>
+      </div>
+      <div class="award">
+        <div class="badge">Finalist</div>
+        <h4>Launch U Shark Tank</h4>
+        <p>Harrisburg University founder competition.</p>
+      </div>
+      <div class="award">
+        <div class="badge">Honor</div>
+        <h4>1783 Scholar</h4>
+        <p>Dickinson College merit scholarship.</p>
+      </div>
+      <div class="award">
+        <div class="badge">Honor</div>
+        <h4>Music Scholar Award</h4>
+        <p>Dickinson College — performing arts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="sec-hd">
+      <div class="num">/ 07</div>
+      <div class="title">Open desk.</div>
+      <div class="meta">FA · 2026</div>
+    </div>
+
+    <h2 class="big">
+      Hiring for finance, analytics, or AI product?<br/>
+      <i>Let's talk numbers.</i>
+    </h2>
+
+    <div class="hero-cta">
+      <a class="btn primary" href="mailto:farhanazim2015@gmail.com">farhanazim2015@gmail.com <span class="arrow">→</span></a>
+      <a class="btn" href="tel:+15512237949">+1 551 223 7949</a>
+      <a class="btn" href="https://linkedin.com/in/farhanazimaurronoy/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="https://drive.google.com/drive/folders/1nNoeXYlTxyPwyd4V-aWjdqNkV15dQgBt?usp=drive_link" target="_blank" rel="noopener">Research Folder ↗</a>
+      <a class="btn" href="assets/farhan-azim-resume.pdf" target="_blank" rel="noopener">Resume PDF ↗</a>
+    </div>
+
+    <div class="meta-grid">
+      <div><div class="k">Based</div><div>Carlisle, PA · open to relocation</div></div>
+      <div><div class="k">Languages</div><div>English · Bengali · Hindi</div></div>
+      <div><div class="k">Open To</div><div>Full-time SA / IB / Strategy / AI PM (May '26)</div></div>
+      <div><div class="k">Speaking</div><div><a href="https://aihackathon.usaii.org/" target="_blank" rel="noopener">USAII Hackathon 2026 ↗</a></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 · Farhan Azim Aurronoy · Built single-file. Hosted on GitHub Pages.</div>
+    <div>FAA-TERMINAL · v3.0 · LAST UPDATED MAY 2026 · <span style="color:var(--accent)">⌘K</span> for menu</div>
+  </footer>
+
+</div>
+
+<!-- COMMAND PALETTE -->
+<div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="cmdk">
+    <input type="text" id="cmdk-input" placeholder="Type to navigate · email · linkedin · resume…" autocomplete="off" />
+    <ul id="cmdk-list"></ul>
+    <div class="footer">
+      <span>↑↓ navigate · ↵ select · ESC close</span>
+      <span>FAA-TERMINAL</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// SCROLL REVEAL
+(function(){
+  var els = document.querySelectorAll('.section, .hero, .award, .proj, .xp .item, .stack-row');
+  els.forEach(function(e){ e.classList.add('reveal'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, {threshold:.08});
+  els.forEach(function(e){ io.observe(e); });
+})();
+
+// COMMAND PALETTE
+(function(){
+  var overlay = document.getElementById('cmdk-overlay');
+  var input = document.getElementById('cmdk-input');
+  var list = document.getElementById('cmdk-list');
+  var trigger = document.getElementById('cmd-trigger');
+  var activeIdx = 0;
+
+  var items = [
+    {label:'Go: Impact', hint:'§01', action:function(){location.hash='#impact'}},
+    {label:'Go: Experience', hint:'§02', action:function(){location.hash='#experience'}},
+    {label:'Go: Projects', hint:'§03', action:function(){location.hash='#projects'}},
+    {label:'Go: Press & Speaking', hint:'§04', action:function(){location.hash='#press'}},
+    {label:'Go: Education', hint:'§05', action:function(){location.hash='#education'}},
+    {label:'Go: Awards', hint:'§06', action:function(){location.hash='#awards'}},
+    {label:'Go: Contact', hint:'§07', action:function(){location.hash='#contact'}},
+    {label:'Email: farhanazim2015@gmail.com', hint:'mailto', action:function(){location.href='mailto:farhanazim2015@gmail.com'}},
+    {label:'Open: LinkedIn', hint:'↗', action:function(){window.open('https://linkedin.com/in/farhanazimaurronoy/','_blank')}},
+    {label:'Open: USAII Hackathon 2026', hint:'↗', action:function(){window.open('https://aihackathon.usaii.org/','_blank')}},
+    {label:'Open: Rates Analysis Dashboard', hint:'preview', action:function(){location.href='dashboards/rates-analysis.html'}},
+    {label:'Open: Research Folder', hint:'↗', action:function(){window.open('https://drive.google.com/drive/folders/1nNoeXYlTxyPwyd4V-aWjdqNkV15dQgBt?usp=drive_link','_blank')}},
+    {label:'Download: Resume PDF', hint:'pdf', action:function(){window.open('assets/farhan-azim-resume.pdf','_blank')}},
+    {label:'Call: +1 551 223 7949', hint:'tel', action:function(){location.href='tel:+15512237949'}}
+  ];
+
+  function render(filter){
+    list.innerHTML = '';
+    var f = (filter||'').toLowerCase();
+    var visible = items.filter(function(i){ return !f || i.label.toLowerCase().indexOf(f) > -1 || i.hint.toLowerCase().indexOf(f) > -1; });
+    if(activeIdx >= visible.length) activeIdx = 0;
+    visible.forEach(function(it, idx){
+      var li = document.createElement('li');
+      if(idx === activeIdx) li.className = 'active';
+      li.innerHTML = '<span>'+it.label+'</span><span class="hint">'+it.hint+'</span>';
+      li.addEventListener('click', function(){ it.action(); close(); });
+      list.appendChild(li);
+    });
+    return visible;
+  }
+
+  function open(){ overlay.classList.add('open'); input.value=''; activeIdx=0; render(''); setTimeout(function(){input.focus()}, 30); }
+  function close(){ overlay.classList.remove('open'); }
+
+  document.addEventListener('keydown', function(e){
+    if((e.metaKey||e.ctrlKey) && e.key.toLowerCase() === 'k'){ e.preventDefault(); overlay.classList.contains('open') ? close() : open(); }
+    if(e.key === 'Escape' && overlay.classList.contains('open')){ close(); }
+    if(overlay.classList.contains('open')){
+      var visible = render(input.value);
+      if(e.key === 'ArrowDown'){ e.preventDefault(); activeIdx = Math.min(visible.length-1, activeIdx+1); render(input.value); }
+      if(e.key === 'ArrowUp'){ e.preventDefault(); activeIdx = Math.max(0, activeIdx-1); render(input.value); }
+      if(e.key === 'Enter'){ e.preventDefault(); if(visible[activeIdx]){ visible[activeIdx].action(); close(); } }
+    }
+  });
+  input.addEventListener('input', function(){ activeIdx=0; render(input.value); });
+  trigger.addEventListener('click', open);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
+})();
+</script>
+
+</body>
+</html>
