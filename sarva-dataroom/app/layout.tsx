@@ -2,8 +2,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Sarva Investor Intelligence Room',
-  description: 'Private diligence workspace for Sarva leadership and approved advisors.',
+  title: 'Sarva Private Company Workspace',
+  description: 'Private operating system, tracker suite and diligence room for Sarva leadership and approved advisors.',
   robots: {
     index: false,
     follow: false,
@@ -13,9 +13,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
+  return <html lang="en"><body>{children}</body></html>;
 }
