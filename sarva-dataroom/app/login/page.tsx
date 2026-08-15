@@ -15,9 +15,9 @@ export default function LoginPage(){
     setError('Access denied. Check the approved email and access code.');setLoading(false);
   }
   return <main className="loginPage"><section className="loginCard">
-    <div className="loginMark">S</div><span className="eyebrow">SARVA / CONFIDENTIAL</span>
-    <h1>Investor Intelligence Room</h1><p>Private diligence workspace for Sarva leadership and approved advisors.</p>
-    <form onSubmit={submit}><label>Email<input name="email" type="email" autoComplete="email" placeholder="you@company.com" required/></label><label>Access code<input name="code" type="password" autoComplete="current-password" placeholder="••••••••••••" required/></label>{error&&<div className="loginError">{error}</div>}<button className="primary loginBtn" disabled={loading}><LockKeyhole size={15}/>{loading?'Verifying…':'Enter secure room'}</button></form>
-    <div className="loginNote"><ShieldCheck size={15}/><span>Access is limited by server-side email allowlist and private access code.</span></div>
+    <img className="loginLogo" src="/sarva-logo.png" alt="Sarva"/><span className="loginKicker">SARVA / PRIVATE</span>
+    <h1>Company Workspace</h1><p>Private operating system and diligence room for Sarva leadership and approved advisors.</p>
+    <form onSubmit={submit}><label>Email<input name="email" type="email" autoComplete="email" placeholder="you@company.com" required/></label><label>Access code<input name="code" type="password" autoComplete="current-password" placeholder="••••••••••••" required/></label>{error&&<div className="loginError">{error}</div>}<button className="primary loginBtn" disabled={loading}><LockKeyhole size={15}/>{loading?'Verifying…':'Enter workspace'}</button></form>
+    <div className="loginNote"><ShieldCheck size={15}/><span>Access is restricted by an approved-email allowlist and a private server-side access code.</span></div>
   </section></main>
 }
