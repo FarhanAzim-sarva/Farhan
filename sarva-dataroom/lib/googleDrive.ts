@@ -19,10 +19,11 @@ export type OperatingState={
   investors:Array<Record<string,unknown>>;
   blockers:Array<Record<string,unknown>>;
   imports:Array<Record<string,unknown>>;
+  emailSegments:Array<Record<string,unknown>>;
   updatedAt?:string;
 };
 
-const EMPTY_STATE:OperatingState={contacts:[],kpis:[],tasks:[],opportunities:[],investors:[],blockers:[],imports:[]};
+const EMPTY_STATE:OperatingState={contacts:[],kpis:[],tasks:[],opportunities:[],investors:[],blockers:[],imports:[],emailSegments:[]};
 const STATE_FILE='Sarva OS Data.json';
 
 function driveClient(){
@@ -32,7 +33,6 @@ function driveClient(){
   const auth=new google.auth.JWT({
     email:clientEmail,
     key:privateKey,
-    // The service account should only be shared into dedicated Sarva folders.
     scopes:['https://www.googleapis.com/auth/drive'],
   });
   return google.drive({version:'v3',auth});
